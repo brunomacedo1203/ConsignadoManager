@@ -1,0 +1,43 @@
+<div class="cliente-box">
+  <button>Cadastrar novo cliente</button>
+  <div class="input-box">
+    <label>Procurar:</label>
+    <input type="text" placeholder="Qual o nome do cliente?" (input)="search($event)">
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Nome</th>
+      <th>CPF</th>
+      <th>Tipo de empréstimo</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let cliente of clientes">
+    <tr>
+      <td>
+        <div *ngIf="cliente.ativo == true; else inativo">
+          <img src="assets/images/Ativo.png" alt="" style="height: 20 px; width: 20px;">
+        </div>
+        <ng-template #inativo>
+          <img src="assets/images/Inativo.png" alt="" style="height: 20 px; width: 20px;">
+        </ng-template>
+      </td>
+      <td>{{cliente.nome}}</td>
+      <td>{{cliente.cpf}}</td>
+      <td>{{cliente.tipoEmprestimo}}</td>
+      <td>
+        <button>Editar</button>
+        <button>Detalhes</button>
+      </td>
+      <td>
+        <button>Excluir</button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>

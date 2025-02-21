@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "jGSvCT3yQUUQcDFViTLwY6oKdFjb17XzFHvbPG4hxJk=",
+  "Source": "WebAPI_EmprestimoConsignado",
+  "BasePath": "_content/WebAPI_EmprestimoConsignado",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
