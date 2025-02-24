@@ -1,5 +1,5 @@
 <div class="cliente-box">
-  <button>Cadastrar novo cliente</button>
+  <button [routerLink]="['/cadastro']">Cadastrar novo cliente</button>
   <div class="input-box">
     <label>Procurar:</label>
     <input type="text" placeholder="Qual o nome do cliente?" (input)="search($event)">

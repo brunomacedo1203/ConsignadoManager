@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ClienteService } from '../../services/cliente.service';
 import { Cliente } from '../../models/Cliente';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
 })
 export class HomeComponent implements OnInit {
   clientes: Cliente[] = [];
@@ -31,7 +32,6 @@ export class HomeComponent implements OnInit {
       });
 
       this.clientes = dadosClientes;
-      console.log('Clientes carregados:', this.clientes);
       this.clientesGeral = dados;
     });
   }

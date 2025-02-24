@@ -1,0 +1,70 @@
+<h1>Cadastrar Cliente</h1>
+
+<form [formGroup]="clienteForm" (ngSubmit)="submit()">
+  <div class="input_box">
+    <label>Nome</label>
+    <input type="text" formControlName="nome" placeholder="Insira o nome" required>
+  </div>
+
+  <div class="input_box">
+    <label>CPF</label>
+    <input type="text" formControlName="cpf" placeholder="Insira o CPF (somente números)" required>
+  </div>
+
+  <div class="input_box">
+    <label>Email</label>
+    <input type="email" formControlName="email" placeholder="Insira o email" required>
+  </div>
+
+  <div class="input_box">
+    <label>Tipo de Empréstimo</label>
+    <select formControlName="tipoEmprestimo" required>
+      <option value="">Selecione</option>
+      <option value="INSS">INSS</option>
+      <option value="Serviço Público">Serviço Público</option>
+      <option value="Militar">Militar</option>
+      <option value="Privado">Privado</option>
+    </select>
+  </div>
+  <!--
+
+  <div class="input_box">
+    <label>Ativo</label>
+    <input type="checkbox" formControlName="ativo">
+  </div>
+
+  <div class="input_box">
+    <label>Status do Empréstimo</label>
+    <select formControlName="statusEmprestimo" required>
+      <option value="">Selecione</option>
+      <option value="Aprovado">Aprovado</option>
+      <option value="Pendente">Pendente</option>
+      <option value="Rejeitado">Rejeitado</option>
+    </select>
+  </div>
+
+  <div class="input_box">
+    <label>Valor do Empréstimo</label>
+    <input type="number" formControlName="valorEmprestimo" required>
+  </div>
+
+  <div class="input_box">
+    <label>Quantidade de Parcelas</label>
+    <input type="number" formControlName="qtdParcelas" required>
+  </div>
+
+  <div class="input_box">
+    <label>Valor da Parcela</label>
+    <input type="number" formControlName="valorParcela" required>
+  </div>
+
+  <div class="input_box">
+    <label>Data da Contratação</label>
+    <input type="date" formControlName="dataContratacao" required>
+  </div> -->
+
+  <div class="btn-box">
+    <button type="submit">Cadastrar</button>
+    <button type="button">Voltar</button>
+  </div>
+</form>

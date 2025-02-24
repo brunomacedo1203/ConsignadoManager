@@ -55,8 +55,7 @@
               "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Service\\ClienteService\\ClienteService.cs",
               "ViewState": "AgIAAJIAAAAAAAAAAAAgwKYAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-18T20:31:23.469Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-18T20:31:23.469Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Controllers\\ClienteController.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAIwCsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-17T21:59:39.235Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-17T21:59:39.235Z"
             }
           ]
         }
