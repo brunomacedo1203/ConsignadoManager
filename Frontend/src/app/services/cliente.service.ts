@@ -19,4 +19,9 @@ export class ClienteService {
     return this.http.get<Response<Cliente[]>>(this.apiUrl);
   }
 
+  CreateCliente(cliente:Cliente):Observable<Response<Cliente[]>>{
+    console.log('URL da API:', this.apiUrl);
+    return this.http.post<Response<Cliente[]>>(`${this.apiUrl}`, cliente);
+  }
+
 }
