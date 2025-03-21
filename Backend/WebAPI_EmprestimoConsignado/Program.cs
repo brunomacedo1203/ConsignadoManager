@@ -14,10 +14,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTudo",
         policy => policy
-            .AllowAnyOrigin()   // Permite qualquer origem
-            .AllowAnyMethod()   // Permite qualquer método HTTP (GET, POST, etc.)
-            .AllowAnyHeader()); // Permite qualquer cabeçalho
-});
+            .AllowAnyOrigin()   
+            .AllowAnyMethod()   
+            .AllowAnyHeader()); 
 
 // Configuração do banco de dados
 var connectionString = Environment.GetEnvironmentVariable("DefaultConnection_EmprestimoConsignado");
