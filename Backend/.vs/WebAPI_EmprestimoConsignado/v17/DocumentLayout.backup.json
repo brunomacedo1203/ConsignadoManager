@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\service\\clienteservice\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\service\\clienteservice\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -31,6 +35,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Program.cs",
+              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Program.cs",
+              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Program.cs",
+              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Program.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAYwAwAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T11:54:43.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ClienteService.cs",
               "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\ClienteService\\ClienteService.cs",
               "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Service\\ClienteService\\ClienteService.cs",
@@ -43,7 +60,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ClienteController.cs",
               "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Controllers\\ClienteController.cs",
               "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Controllers\\ClienteController.cs",
