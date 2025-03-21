@@ -7,7 +7,7 @@ using WebAPI_EmprestimoConsignado.Service.ClienteService;
 
 public static class DependencyInjection
 {
-    public static void AddDependencies(this IServiceCollection services, IConfiguration configuration) 
+    public static void AddDependencies(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IClienteInterface, ClienteService>();
 
@@ -23,14 +23,14 @@ public static class DependencyInjection
             options.UseOracle(connectionString);
         });
 
-        // configurando a autenticação
+        // Configuração da autenticação JWT
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
         }).AddJwtBearer(options =>
         {
-            options.TokenValidationParameters = new TokenValidationParameters  
+            options.TokenValidationParameters = new TokenValidationParameters
             {
                 ValidateIssuer = true,
                 ValidateAudience = true,
@@ -40,10 +40,9 @@ public static class DependencyInjection
                 ValidIssuer = configuration["jwt:issuer"],
                 ValidAudience = configuration["jwt:audience"],
                 IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(configuration["jwt:secretyKey"])), 
+                    Encoding.UTF8.GetBytes(configuration["jwt:secretKey"])), 
                 ClockSkew = TimeSpan.Zero
             };
         });
-
     }
 }

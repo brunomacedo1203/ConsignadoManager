@@ -110,6 +110,35 @@ namespace WebAPI_EmprestimoConsignado.Migrations
                     b.ToTable("Emprestimos");
                 });
 
+            modelBuilder.Entity("WebAPI_EmprestimoConsignado.Models.UsuarioModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("RAW(2000)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("RAW(2000)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+                });
+
             modelBuilder.Entity("WebAPI_EmprestimoConsignado.Models.EmprestimoModel", b =>
                 {
                     b.HasOne("WebAPI_EmprestimoConsignado.Models.ClienteModel", "Cliente")
