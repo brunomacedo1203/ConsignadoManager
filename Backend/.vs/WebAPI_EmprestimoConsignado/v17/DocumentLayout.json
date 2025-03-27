@@ -41,7 +41,7 @@
               "Title": "Microsoft.Common.CurrentVersion.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
               "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
-              "ViewState": "AgIAAMgVAAAAAAAAAAAQwOMVAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAMgVAAAAAAAAAAAQwN0VAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2025-03-27T19:22:37.899Z",
               "EditorCaption": ""
@@ -56,8 +56,7 @@
               "RelativeToolTip": "WebAPI_EmprestimoConsignado\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-27T19:16:21.693Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T19:16:21.693Z"
             },
             {
               "$type": "Document",
@@ -67,10 +66,9 @@
               "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Program.cs",
               "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Program.cs",
               "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwB0AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T19:00:05.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-27T19:00:05.891Z"
             },
             {
               "$type": "Document",

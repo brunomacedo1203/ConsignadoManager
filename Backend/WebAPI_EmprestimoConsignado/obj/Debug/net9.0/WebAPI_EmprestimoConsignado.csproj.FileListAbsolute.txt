@@ -1,3 +1,4 @@
+
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\bin\Debug\net9.0\appsettings.Development.json
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\bin\Debug\net9.0\appsettings.json
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\bin\Debug\net9.0\WebAPI_EmprestimoConsignado.staticwebassets.endpoints.json
@@ -132,14 +133,10 @@ E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.WebAPI_EmprestimoConsignado.props
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.WebAPI_EmprestimoConsignado.props
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\staticwebassets.pack.json
-E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\WebAPI_E.904FE547.Up2Date
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\WebAPI_EmprestimoConsignado.dll
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\refint\WebAPI_EmprestimoConsignado.dll
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\WebAPI_EmprestimoConsignado.pdb
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\WebAPI_EmprestimoConsignado.genruntimeconfig.cache
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\ref\WebAPI_EmprestimoConsignado.dll
-<<<<<<< HEAD
-E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\bin\Debug\net9.0\BCrypt.Net-Next.dll
-=======
->>>>>>> f2e9fe2ce13a9db0a3d5af0f439310afb5f6fb91
+E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

@@ -1,31 +1,31 @@
 [
   {
-    "ContainingType": "AuthController",
+    "ContainingType": "WebAPI_EmprestimoConsignado.Controllers.AuthController",
     "Method": "Login",
-    "RelativePath": "api/Auth/login",
+    "RelativePath": "api/Auth/Login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "login",
-        "Type": "LoginModel",
+        "Name": "usuarioLogin",
+        "Type": "WebAPI_EmprestimoConsignado.DTO.UsuarioLoginDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "AuthController",
+    "ContainingType": "WebAPI_EmprestimoConsignado.Controllers.AuthController",
     "Method": "Register",
-    "RelativePath": "api/Auth/register",
+    "RelativePath": "api/Auth/Register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "login",
-        "Type": "LoginModel",
+        "Name": "usuarioRegister",
+        "Type": "WebAPI_EmprestimoConsignado.DTO.UsuarioCriacaoDto",
         "IsRequired": true
       }
     ],
@@ -132,7 +132,7 @@
   {
     "ContainingType": "WebAPI_EmprestimoConsignado.Controllers.ClienteController",
     "Method": "GetClienteById",
-    "RelativePath": "api/Cliente/{id}",
+    "RelativePath": "api/Cliente/(id)",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -140,7 +140,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
