@@ -23,156 +23,138 @@ namespace WebAPI_EmprestimoConsignado.Migrations
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("WebAPI_EmprestimoConsignado.Models.ClienteModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("NUMBER(10)");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("Ativo")
-                        .HasColumnType("NUMBER(1)");
+                b.Property<bool>("Ativo")
+                    .HasColumnType("NUMBER(1)");
 
-                    b.Property<string>("CPF")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                b.Property<string>("CPF")
+                    .IsRequired()
+                    .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<DateTime>("DataContratacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                b.Property<DateTime>("DataContratacao")
+                    .HasColumnType("TIMESTAMP(7)");
 
-                    b.Property<DateTime>("DataDeAlteracao")
-                        .HasColumnType("TIMESTAMP(7)");
+                b.Property<DateTime>("DataDeAlteracao")
+                    .HasColumnType("TIMESTAMP(7)");
 
-                    b.Property<DateTime>("DataDeCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                b.Property<DateTime>("DataDeCriacao")
+                    .HasColumnType("TIMESTAMP(7)");
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                b.Property<string>("Email")
+                    .IsRequired()
+                    .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                b.Property<string>("Nome")
+                    .IsRequired()
+                    .HasColumnType("NVARCHAR2(2000)");
 
-                    b.Property<int>("QtdParcelas")
-                        .HasColumnType("NUMBER(10)");
+                b.Property<int>("QtdParcelas")
+                    .HasColumnType("NUMBER(10)");
 
-                    b.Property<int>("StatusEmprestimo")
-                        .HasColumnType("NUMBER(10)");
+                b.Property<int>("StatusEmprestimo")
+                    .HasColumnType("NUMBER(10)");
 
-                    b.Property<int>("TipoEmprestimo")
-                        .HasColumnType("NUMBER(10)");
+                b.Property<int>("TipoEmprestimo")
+                    .HasColumnType("NUMBER(10)");
 
-                    b.Property<decimal>("ValorEmprestimo")
-                        .HasColumnType("DECIMAL(18,2)");
+                b.Property<decimal>("ValorEmprestimo")
+                    .HasColumnType("DECIMAL(18,2)");
 
-                    b.Property<decimal>("ValorParcela")
-                        .HasColumnType("DECIMAL(18,2)");
+                b.Property<decimal>("ValorParcela")
+                    .HasColumnType("DECIMAL(18,2)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Clientes");
-                });
+                b.ToTable("Clientes");
+            });
 
             modelBuilder.Entity("WebAPI_EmprestimoConsignado.Models.EmprestimoModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("NUMBER(10)");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClienteId")
-                        .HasColumnType("NUMBER(10)");
+                b.Property<int>("ClienteId")
+                    .HasColumnType("NUMBER(10)");
 
-                    b.Property<DateTime>("DataDeAlteracao")
-                        .HasColumnType("TIMESTAMP(7)");
+                b.Property<DateTime>("DataDeAlteracao")
+                    .HasColumnType("TIMESTAMP(7)");
 
-                    b.Property<DateTime>("DataDeCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                b.Property<DateTime>("DataDeCriacao")
+                    .HasColumnType("TIMESTAMP(7)");
 
-                    b.Property<decimal?>("Juros")
-                        .HasColumnType("DECIMAL(18,2)");
+                b.Property<decimal?>("Juros")
+                    .HasColumnType("DECIMAL(18,2)");
 
-                    b.Property<int?>("Status")
-                        .HasColumnType("NUMBER(10)");
+                b.Property<int?>("Status")
+                    .HasColumnType("NUMBER(10)");
 
-                    b.Property<int?>("TipoEmprestimo")
-                        .HasColumnType("NUMBER(10)");
+                b.Property<int?>("TipoEmprestimo")
+                    .HasColumnType("NUMBER(10)");
 
-                    b.Property<decimal?>("Valor")
-                        .HasColumnType("DECIMAL(18,2)");
+                b.Property<decimal?>("Valor")
+                    .HasColumnType("DECIMAL(18,2)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
+                b.HasIndex("ClienteId");
 
-                    b.ToTable("Emprestimos");
-                });
+                b.ToTable("Emprestimos");
+            });
 
             modelBuilder.Entity("WebAPI_EmprestimoConsignado.Models.UsuarioModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("NUMBER(10)");
+            {
+                b.Property<int>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("NUMBER(10)");
 
-                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-<<<<<<< HEAD
-                    b.Property<int>("Cargo")
-                        .HasColumnType("NUMBER(10)");
+                b.Property<int>("Cargo")
+                    .HasColumnType("NUMBER(10)");
 
-=======
->>>>>>> f2e9fe2ce13a9db0a3d5af0f439310afb5f6fb91
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                b.Property<string>("Email")
+                    .IsRequired()
+                    .HasColumnType("NVARCHAR2(2000)");
 
-<<<<<<< HEAD
-                    b.Property<byte[]>("SenhaHash")
-                        .IsRequired()
-                        .HasColumnType("RAW(2000)");
+                b.Property<byte[]>("SenhaHash")
+                    .IsRequired()
+                    .HasColumnType("RAW(2000)");
 
-                    b.Property<byte[]>("SenhaSalt")
-                        .IsRequired()
-                        .HasColumnType("RAW(2000)");
+                b.Property<byte[]>("SenhaSalt")
+                    .IsRequired()
+                    .HasColumnType("RAW(2000)");
 
-                    b.Property<DateTime>("TokenDataCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
+                b.Property<DateTime>("TokenDataCriacao")
+                    .HasColumnType("TIMESTAMP(7)");
 
-                    b.Property<string>("Usuario")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                b.Property<string>("Usuario")
+                    .IsRequired()
+                    .HasColumnType("NVARCHAR2(2000)");
 
-=======
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
+                b.HasKey("Id");
 
-                    b.Property<byte[]>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("RAW(2000)");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("RAW(2000)");
-
->>>>>>> f2e9fe2ce13a9db0a3d5af0f439310afb5f6fb91
-                    b.HasKey("Id");
-
-                    b.ToTable("Usuarios");
-                });
+                b.ToTable("Usuarios");
+            });
 
             modelBuilder.Entity("WebAPI_EmprestimoConsignado.Models.EmprestimoModel", b =>
-                {
-                    b.HasOne("WebAPI_EmprestimoConsignado.Models.ClienteModel", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+            {
+                b.HasOne("WebAPI_EmprestimoConsignado.Models.ClienteModel", "Cliente")
+                    .WithMany()
+                    .HasForeignKey("ClienteId")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
 
-                    b.Navigation("Cliente");
-                });
+                b.Navigation("Cliente");
+            });
 #pragma warning restore 612, 618
         }
     }

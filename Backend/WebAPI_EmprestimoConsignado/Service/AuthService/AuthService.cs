@@ -1,4 +1,5 @@
-﻿using WebAPI_EmprestimoConsignado.DataContext;
+﻿using Microsoft.EntityFrameworkCore;
+using WebAPI_EmprestimoConsignado.DataContext;
 using WebAPI_EmprestimoConsignado.DTO;
 using WebAPI_EmprestimoConsignado.Models;
 using WebAPI_EmprestimoConsignado.Service.SenhaService;
@@ -51,13 +52,13 @@ namespace WebAPI_EmprestimoConsignado.Service.AuthService
             return respostaServico;
         }
 
-        public async Task<Response<UsuarioLoginDto>> Login(UsuarioLoginDto usuarioLogin)
+        public async Task<Response<string>> Login(UsuarioLoginDto usuarioLogin)
         {
-            Response<UsuarioLoginDto> respostaServico = new Response<UsuarioLoginDto>();
+            Response<string> respostaServico = new Response <string>();
 
             try
             {
-                var usuario = _context.Usuarios.FirstOrDefault(userBanco => userBanco.Email == usuarioLogin.Email);
+                var usuario = await _context.Usuarios.FirstOrDefaultAsync (userBanco => userBanco.Email == usuarioLogin.Email);
                 if (usuario == null) {
                     respostaServico.Mensagem = "Crendencias Inválidas!";
                     respostaServico.Status = false;
