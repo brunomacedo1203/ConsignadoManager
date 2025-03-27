@@ -11,5 +11,6 @@ namespace WebAPI_EmprestimoConsignado.DataContext
 
         public DbSet<ClienteModel> Clientes { get; set; }
         public DbSet<EmprestimoModel> Emprestimos { get; set; }
+        public DbSet<UsuarioModel> Usuarios { get; set; }
     }
 }

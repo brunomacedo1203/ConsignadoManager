@@ -5,6 +5,37 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Auth/Register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCriacaoDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCriacaoDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioCriacaoDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Cliente": {
       "get": {
         "tags": [
@@ -244,6 +275,15 @@
   },
   "components": {
     "schemas": {
+      "CargoEnum": {
+        "enum": [
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "ClienteModel": {
         "type": "object",
         "properties": {
@@ -353,6 +393,38 @@
           "Privado"
         ],
         "type": "string"
+      },
+      "UsuarioCriacaoDto": {
+        "required": [
+          "cargo",
+          "email",
+          "senha",
+          "usuario"
+        ],
+        "type": "object",
+        "properties": {
+          "usuario": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "senha": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "confirmacaoSenha": {
+            "type": "string",
+            "nullable": true
+          },
+          "cargo": {
+            "$ref": "#/components/schemas/CargoEnum"
+          }
+        },
+        "additionalProperties": false
       }
     }
   }

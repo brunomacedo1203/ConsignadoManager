@@ -1,12 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using WebAPI_EmprestimoConsignado.DataContext;
+using WebAPI_EmprestimoConsignado.Service.AuthService;
 using WebAPI_EmprestimoConsignado.Service.ClienteService;
+using WebAPI_EmprestimoConsignado.Service.SenhaService;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IAuthInterface, AuthService>();
+builder.Services.AddScoped<ISenhaInterface, SenhaService>();
 builder.Services.AddScoped<IClienteInterface, ClienteService>();
 
 //  Adicionando a configuração do CORS
@@ -14,9 +18,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTudo",
         policy => policy
-            .AllowAnyOrigin()   // Permite qualquer origem
-            .AllowAnyMethod()   // Permite qualquer método HTTP (GET, POST, etc.)
-            .AllowAnyHeader()); // Permite qualquer cabeçalho
+            .AllowAnyOrigin()   
+            .AllowAnyMethod()   
+            .AllowAnyHeader()); 
 });
 
 // Configuração do banco de dados

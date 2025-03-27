@@ -3,20 +3,36 @@
   "WorkspaceRootPath": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\service\\clienteservice\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\service\\clienteservice\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\migrations\\20250327165745_usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\migrations\\20250327165745_usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\models\\clientemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\models\\clientemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\models\\usuariomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\service\\authservice\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\service\\authservice\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\service\\senhaservice\\senhaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\service\\senhaservice\\senhaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\service\\senhaservice\\isenhainterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\service\\senhaservice\\isenhainterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|e:\\projetos\\empr\u00E9stimo consignado\\backend\\webapi_emprestimoconsignado\\service\\authservice\\iauthinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4285EC0-AC07-49D3-A5A2-03DFF6B02D9A}|WebAPI_EmprestimoConsignado\\WebAPI_EmprestimoConsignado.csproj|solutionrelative:webapi_emprestimoconsignado\\service\\authservice\\iauthinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,54 +54,107 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ClienteController.cs",
-              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Controllers\\ClienteController.cs",
-              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Controllers\\ClienteController.cs",
-              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Controllers\\ClienteController.cs",
-              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Controllers\\ClienteController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "20250327165745_UsuarioModel.cs",
+              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Migrations\\20250327165745_UsuarioModel.cs",
+              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Migrations\\20250327165745_UsuarioModel.cs",
+              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Migrations\\20250327165745_UsuarioModel.cs",
+              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Migrations\\20250327165745_UsuarioModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T16:57:25.353Z",
+              "WhenOpened": "2025-03-27T16:58:05.55Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ClienteService.cs",
-              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\ClienteService\\ClienteService.cs",
-              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Service\\ClienteService\\ClienteService.cs",
-              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\ClienteService\\ClienteService.cs",
-              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Service\\ClienteService\\ClienteService.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAcwIMAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ClienteModel.cs",
+              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Models\\ClienteModel.cs",
+              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Models\\ClienteModel.cs",
+              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Models\\ClienteModel.cs",
+              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Models\\ClienteModel.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T16:57:00.783Z",
+              "WhenOpened": "2025-03-27T16:56:34.976Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Program.cs",
-              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Program.cs",
-              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Program.cs",
-              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAVAAAAAAAAAA==",
+              "Title": "UsuarioModel.cs",
+              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Models\\UsuarioModel.cs",
+              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Models\\UsuarioModel.cs",
+              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Models\\UsuarioModel.cs",
+              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Models\\UsuarioModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T13:16:44.117Z",
+              "WhenOpened": "2025-03-27T13:45:23.192Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\appsettings.json",
-              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\appsettings.json",
-              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\appsettings.json",
-              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-20T13:14:47.208Z"
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\AuthService\\AuthService.cs",
+              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Service\\AuthService\\AuthService.cs",
+              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\AuthService\\AuthService.cs",
+              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Service\\AuthService\\AuthService.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAuwD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T21:28:45.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Controllers\\AuthController.cs",
+              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T20:54:11.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SenhaService.cs",
+              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\SenhaService\\SenhaService.cs",
+              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Service\\SenhaService\\SenhaService.cs",
+              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\SenhaService\\SenhaService.cs",
+              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Service\\SenhaService\\SenhaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T22:17:18.982Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ISenhaInterface.cs",
+              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\SenhaService\\ISenhaInterface.cs",
+              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Service\\SenhaService\\ISenhaInterface.cs",
+              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\SenhaService\\ISenhaInterface.cs",
+              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Service\\SenhaService\\ISenhaInterface.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAIAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T22:19:43.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IAuthInterface.cs",
+              "DocumentMoniker": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\AuthService\\IAuthInterface.cs",
+              "RelativeDocumentMoniker": "WebAPI_EmprestimoConsignado\\Service\\AuthService\\IAuthInterface.cs",
+              "ToolTip": "E:\\Projetos\\Empr\u00E9stimo Consignado\\Backend\\WebAPI_EmprestimoConsignado\\Service\\AuthService\\IAuthInterface.cs",
+              "RelativeToolTip": "WebAPI_EmprestimoConsignado\\Service\\AuthService\\IAuthInterface.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T21:28:21.454Z",
+              "EditorCaption": ""
             }
           ]
         }
