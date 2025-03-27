@@ -15,6 +15,12 @@ namespace WebAPI_EmprestimoConsignado.Controllers
             _authInterface = authInterface;
         }
 
+        [HttpPost("Login")]
+        public async Task<ActionResult> Login(UsuarioLoginDto usuarioLogin)
+        {
+            return Ok();
+        }
+
         [HttpPost("Register")]
         public async Task<ActionResult>Register(UsuarioCriacaoDto usuarioRegister)
         {

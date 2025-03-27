@@ -51,6 +51,41 @@ namespace WebAPI_EmprestimoConsignado.Service.AuthService
             return respostaServico;
         }
 
+        public async Task<Response<UsuarioLoginDto>> Login(UsuarioLoginDto usuarioLogin)
+        {
+            Response<UsuarioLoginDto> respostaServico = new Response<UsuarioLoginDto>();
+
+            try
+            {
+                var usuario = _context.Usuarios.FirstOrDefault(userBanco => userBanco.Email == usuarioLogin.Email);
+                if (usuario == null) {
+                    respostaServico.Mensagem = "Crendencias Inválidas!";
+                    respostaServico.Status = false;
+                    return respostaServico;
+            }
+                if(!_senhaInterface.VerificaSenhaHash(usuarioLogin.Senha, usuario.SenhaHash, usuario.SenhaSalt))
+                {
+                    respostaServico.Mensagem = "Credenciais inválidas!";
+                    respostaServico.Status = false;
+                    return respostaServico;
+                }
+                var token = _senhaInterface.CriarToken(usuario);
+
+                respostaServico.Dados = token;
+                respostaServico.Mensagem = "Usuário logado com sucesso!";
+
+            }
+
+            catch (Exception ex)
+            {
+                respostaServico.Dados = null;
+                respostaServico.Mensagem = ex.Message;
+                respostaServico.Status = false;
+            }
+
+            return respostaServico;
+
+        }
         public bool VerificaSeEmaileUusuarioExiste(UsuarioCriacaoDto usuarioRegistro)
         {
             var usuario = _context.Usuarios.FirstOrDefault(userBanco => userBanco.Email == usuarioRegistro.Email || userBanco.Usuario == usuarioRegistro.Usuario);
