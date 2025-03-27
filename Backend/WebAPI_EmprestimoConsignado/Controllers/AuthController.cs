@@ -19,7 +19,7 @@ namespace WebAPI_EmprestimoConsignado.Controllers
         public async Task<ActionResult> Login(UsuarioLoginDto usuarioLogin)
         {
             var resposta = await _authInterface.Login(usuarioLogin);
-            return Ok();
+            return Ok(resposta);
         }
 
         [HttpPost("Register")]

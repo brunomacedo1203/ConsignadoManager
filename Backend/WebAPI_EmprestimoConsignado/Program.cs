@@ -1,4 +1,9 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 using WebAPI_EmprestimoConsignado.DataContext;
 using WebAPI_EmprestimoConsignado.Service.AuthService;
 using WebAPI_EmprestimoConsignado.Service.ClienteService;
@@ -13,7 +18,31 @@ builder.Services.AddScoped<IAuthInterface, AuthService>();
 builder.Services.AddScoped<ISenhaInterface, SenhaService>();
 builder.Services.AddScoped<IClienteInterface, ClienteService>();
 
-//  Adicionando a configura??o do CORS
+builder.Services.AddSwaggerGen(options =>
+{
+    options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+    {
+        Description = "Standar Authorization header using the Bearer scheme (\"bearer {token}\")",
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey
+    });
+    options.OperationFilter<SecurityRequirementsOperationFilter>();
+
+});
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
+        ValidateAudience = false,
+        ValidateIssuer = false
+    };
+});
+
+//  Adicionando a configuraao do CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTudo",
@@ -44,12 +73,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-//Aplicando CORS antes do Authorization
 app.UseCors("PermitirTudo");
-
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
-
-
 app.Run();
