@@ -17,3 +17,7 @@ obj/
 
 # Dependências
 node_modules/
+
+# Ignorar diretórios de build
+/Backend/bin/
+/Backend/obj/

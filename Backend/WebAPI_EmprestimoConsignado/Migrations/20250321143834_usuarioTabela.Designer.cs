@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 using WebAPI_EmprestimoConsignado.DataContext;
@@ -11,9 +12,11 @@ using WebAPI_EmprestimoConsignado.DataContext;
 namespace WebAPI_EmprestimoConsignado.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250321143834_usuarioTabela")]
+    partial class usuarioTabela
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -118,33 +121,10 @@ namespace WebAPI_EmprestimoConsignado.Migrations
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-<<<<<<< HEAD
-                    b.Property<int>("Cargo")
-                        .HasColumnType("NUMBER(10)");
-
-=======
->>>>>>> f2e9fe2ce13a9db0a3d5af0f439310afb5f6fb91
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
 
-<<<<<<< HEAD
-                    b.Property<byte[]>("SenhaHash")
-                        .IsRequired()
-                        .HasColumnType("RAW(2000)");
-
-                    b.Property<byte[]>("SenhaSalt")
-                        .IsRequired()
-                        .HasColumnType("RAW(2000)");
-
-                    b.Property<DateTime>("TokenDataCriacao")
-                        .HasColumnType("TIMESTAMP(7)");
-
-                    b.Property<string>("Usuario")
-                        .IsRequired()
-                        .HasColumnType("NVARCHAR2(2000)");
-
-=======
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("NVARCHAR2(2000)");
@@ -157,7 +137,6 @@ namespace WebAPI_EmprestimoConsignado.Migrations
                         .IsRequired()
                         .HasColumnType("RAW(2000)");
 
->>>>>>> f2e9fe2ce13a9db0a3d5af0f439310afb5f6fb91
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");

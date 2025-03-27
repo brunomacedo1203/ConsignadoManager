@@ -139,4 +139,7 @@ E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\WebAPI_EmprestimoConsignado.pdb
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\WebAPI_EmprestimoConsignado.genruntimeconfig.cache
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\ref\WebAPI_EmprestimoConsignado.dll
+<<<<<<< HEAD
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\bin\Debug\net9.0\BCrypt.Net-Next.dll
+=======
+>>>>>>> f2e9fe2ce13a9db0a3d5af0f439310afb5f6fb91
