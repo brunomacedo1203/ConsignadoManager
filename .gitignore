@@ -1,0 +1,19 @@
+# Build results
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# Visual Studio files
+.vs/
+*.user
+*.suo
+*.cache
+*.log
+
+# Configuração do ambiente
+.env
+
+# Dependências
+node_modules/
