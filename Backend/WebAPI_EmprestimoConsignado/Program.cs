@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -8,6 +7,8 @@ using WebAPI_EmprestimoConsignado.DataContext;
 using WebAPI_EmprestimoConsignado.Service.AuthService;
 using WebAPI_EmprestimoConsignado.Service.ClienteService;
 using WebAPI_EmprestimoConsignado.Service.SenhaService;
+using WebAPI_EmprestimoConsignado.Enums;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,13 +23,12 @@ builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
     {
-        Description = "Standar Authorization header using the Bearer scheme (\"bearer {token}\")",
+        Description = "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
         In = ParameterLocation.Header,
         Name = "Authorization",
         Type = SecuritySchemeType.ApiKey
     });
     options.OperationFilter<SecurityRequirementsOperationFilter>();
-
 });
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -42,17 +42,17 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-//  Adicionando a configuraao do CORS
+// Adicionando a configuração do CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTudo",
         policy => policy
-            .AllowAnyOrigin()   
-            .AllowAnyMethod()   
-            .AllowAnyHeader()); 
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 });
 
-// Configura??o do banco de dados
+// Configuração do banco de dados
 var connectionString = Environment.GetEnvironmentVariable("DefaultConnection_EmprestimoConsignado");
 if (string.IsNullOrEmpty(connectionString))
 {
@@ -61,6 +61,15 @@ if (string.IsNullOrEmpty(connectionString))
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseOracle(connectionString);
+});
+
+// Configuração de autorização genérica baseada em CargoEnum
+builder.Services.AddAuthorization(options =>
+{
+    foreach (var cargo in Enum.GetValues<CargoEnum>())
+    {
+        options.AddPolicy(cargo.ToString(), policy => policy.RequireClaim("Cargo", cargo.ToString()));
+    }
 });
 
 

@@ -132,7 +132,7 @@
   {
     "ContainingType": "WebAPI_EmprestimoConsignado.Controllers.ClienteController",
     "Method": "GetClienteById",
-    "RelativePath": "api/Cliente/(id)",
+    "RelativePath": "api/Cliente/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -140,7 +140,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [

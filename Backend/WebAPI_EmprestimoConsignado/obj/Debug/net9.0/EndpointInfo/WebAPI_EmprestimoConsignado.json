@@ -92,8 +92,19 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [ ]
+          }
+        ]
       },
       "post": {
         "tags": [
@@ -138,8 +149,21 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "Administrador,Supervisor"
+            ]
+          }
+        ]
       },
       "put": {
         "tags": [
@@ -184,8 +208,21 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "Administrador"
+            ]
+          }
+        ]
       },
       "delete": {
         "tags": [
@@ -221,11 +258,24 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "Administrador"
+            ]
+          }
+        ]
       }
     },
-    "/api/Cliente/(id)": {
+    "/api/Cliente/{id}": {
       "get": {
         "tags": [
           "Cliente"
@@ -233,7 +283,8 @@
         "parameters": [
           {
             "name": "id",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -260,8 +311,19 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [ ]
+          }
+        ]
       }
     },
     "/api/Cliente/inativaCliente": {
@@ -299,8 +361,21 @@
                 }
               }
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
           }
-        }
+        },
+        "security": [
+          {
+            "oauth2": [
+              "Administrador,Supervisor"
+            ]
+          }
+        ]
       }
     },
     "/api/Usuario": {
@@ -350,7 +425,10 @@
         "enum": [
           1,
           2,
-          3
+          3,
+          4,
+          5,
+          6
         ],
         "type": "integer",
         "format": "int32"
@@ -537,7 +615,7 @@
     "securitySchemes": {
       "oauth2": {
         "type": "apiKey",
-        "description": "Standar Authorization header using the Bearer scheme (\"bearer {token}\")",
+        "description": "Standard Authorization header using the Bearer scheme (\"bearer {token}\")",
         "name": "Authorization",
         "in": "header"
       }
