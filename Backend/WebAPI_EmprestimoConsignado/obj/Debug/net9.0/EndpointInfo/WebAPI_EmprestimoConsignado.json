@@ -160,7 +160,7 @@
         "security": [
           {
             "oauth2": [
-              "Administrador,Supervisor"
+              "Administrador"
             ]
           }
         ]
@@ -372,7 +372,7 @@
         "security": [
           {
             "oauth2": [
-              "Administrador,Supervisor"
+              "Administrador"
             ]
           }
         ]

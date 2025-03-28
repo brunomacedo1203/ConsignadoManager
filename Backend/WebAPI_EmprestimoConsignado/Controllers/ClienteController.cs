@@ -34,7 +34,7 @@ namespace WebAPI_EmprestimoConsignado.Controllers
         }        
        
         [HttpPost]
-        [Authorize(Policy = "Administrador,Supervisor")]
+        [Authorize(Policy = "Administrador")]
         public async Task<ActionResult<ServiceResponse<List<ClienteModel>>>> CreateCliente(ClienteModel novoCliente)
         {
             return Ok(await _clienteInterface.CreateCliente(novoCliente));
@@ -49,7 +49,7 @@ namespace WebAPI_EmprestimoConsignado.Controllers
         }
         
         [HttpPut("inativaCliente")]
-        [Authorize(Policy = "Administrador,Supervisor")]
+        [Authorize(Policy = "Administrador")]
         public async Task<ActionResult<ServiceResponse<List<ClienteModel>>>> InativaCliente(int id)
         {
             ServiceResponse<List<ClienteModel>> serviceResponse = await _clienteInterface.InativaCliente(id);

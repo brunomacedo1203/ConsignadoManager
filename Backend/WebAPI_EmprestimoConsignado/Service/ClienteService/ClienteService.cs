@@ -36,13 +36,7 @@ namespace WebAPI_EmprestimoConsignado.Service.ClienteService
             {
                 serviceResponse.Mensagem = ex.InnerException?.Message ?? ex.Message; // Mostra erro interno
                 serviceResponse.Sucesso = false;
-            }
-
-            /* catch (Exception ex)
-             {
-                 serviceResponse.Mensagem = ex.Message;
-                 serviceResponse.Sucesso = false;
-             }*/
+            }          
 
             return serviceResponse;
         }
