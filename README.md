@@ -1,5 +1,5 @@
 # 🏦 Sistema de Gestão de Empréstimos Consignados
-# Consigned Loan Management System
+# Payroll Loan Management System
 
 [🇧🇷 Português](#português) | [🇺🇸 English](#english)
 
