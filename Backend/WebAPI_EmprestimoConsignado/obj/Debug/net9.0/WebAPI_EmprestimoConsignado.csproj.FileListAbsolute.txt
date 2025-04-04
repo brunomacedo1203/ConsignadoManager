@@ -138,7 +138,6 @@ E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\WebAPI_EmprestimoConsignado.pdb
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\WebAPI_EmprestimoConsignado.genruntimeconfig.cache
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\ref\WebAPI_EmprestimoConsignado.dll
-E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\bin\Debug\net9.0\Scrutor.dll
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\bin\Debug\net9.0\Swashbuckle.AspNetCore.Filters.dll
 E:\Projetos\Empréstimo Consignado\Backend\WebAPI_EmprestimoConsignado\bin\Debug\net9.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll

@@ -3,6 +3,7 @@ import { ClienteService } from '../../services/cliente.service';
 import { Cliente } from '../../models/Cliente';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Response } from '../../models/Response';
 
 @Component({
   selector: 'app-home',
@@ -18,26 +19,27 @@ export class HomeComponent implements OnInit {
   constructor(private clienteService: ClienteService) {}
 
   ngOnInit(): void {
-    this.clienteService.GetClientes().subscribe((data) => {
-      const dados = data.dados;
+    this.clienteService.GetClientes().subscribe((response: Response<Cliente[]>) => {
+      if (response.status && response.dados) {
+        const dadosClientes = response.dados.map((item) => {
+          if (item.dataDeCriacao) {
+            item.dataDeCriacao = new Date(item.dataDeCriacao).toLocaleDateString('pt-BR');
+          }
+          if (item.dataDeAlteracao) {
+            item.dataDeAlteracao = new Date(item.dataDeAlteracao).toLocaleDateString('pt-BR');
+          }
+          return item;
+        });
 
-      const dadosClientes = dados.map((item) => {
-        item.dataDeCriacao = new Date(item.dataDeCriacao!).toLocaleDateString(
-          'pt-BR'
-        );
-        item.dataDeAlteracao = new Date(
-          item.dataDeAlteracao!
-        ).toLocaleDateString('pt-BR');
-        return item;
-      });
-
-      this.clientes = dadosClientes;
-      this.clientesGeral = dados;
+        this.clientes = dadosClientes;
+        this.clientesGeral = response.dados;
+      }
     });
   }
-  search(event: Event) {
+
+  search(event: Event): void {
     const target = event.target as HTMLInputElement;
-    const value = target.value;
+    const value = target.value.toLowerCase();
 
     this.clientes = this.clientesGeral.filter((cliente) => {
       return cliente.nome.toLowerCase().includes(value);

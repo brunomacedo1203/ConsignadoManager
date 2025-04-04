@@ -10,7 +10,7 @@ import { Cliente } from '../models/Cliente';
 })
 export class ClienteService {
 
-  private apiUrl =`${environment.apiUrl}/cliente`
+  private apiUrl =`${environment.apiUrl}/clientes`
 
   constructor(private http:HttpClient) { }
 
@@ -19,9 +19,21 @@ export class ClienteService {
     return this.http.get<Response<Cliente[]>>(this.apiUrl);
   }
 
-  CreateCliente(cliente:Cliente):Observable<Response<Cliente[]>>{
+  GetClienteById(id: number): Observable<Response<Cliente>> {
+    return this.http.get<Response<Cliente>>(`${this.apiUrl}/${id}`);
+  }
+
+  CreateCliente(cliente:Cliente):Observable<Response<Cliente>>{
     console.log('URL da API:', this.apiUrl);
-    return this.http.post<Response<Cliente[]>>(`${this.apiUrl}`, cliente);
+    return this.http.post<Response<Cliente>>(this.apiUrl, cliente);
+  }
+
+  UpdateCliente(cliente: Cliente): Observable<Response<Cliente>> {
+    return this.http.put<Response<Cliente>>(`${this.apiUrl}/${cliente.id}`, cliente);
+  }
+
+  DeleteCliente(id: number): Observable<Response<void>> {
+    return this.http.delete<Response<void>>(`${this.apiUrl}/${id}`);
   }
 
 }

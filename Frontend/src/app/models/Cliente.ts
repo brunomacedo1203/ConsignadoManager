@@ -1,8 +1,10 @@
 export interface Cliente {
   id?: number;
   nome: string;
-  cpf:string;
+  cpf: string;
   email: string;
+  telefone: string;
+  endereco: string;
   ativo: boolean;
   dataDeCriacao?: string;
   dataDeAlteracao?: string;

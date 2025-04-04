@@ -1,5 +1,5 @@
-export interface Response <T>{
-  dados: T;
+export interface Response<T> {
+  status: boolean;
   mensagem: string;
-  sucesso: boolean;
+  dados?: T;
 }
