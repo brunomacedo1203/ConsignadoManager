@@ -1,0 +1,31 @@
+<h2 mat-dialog-title>Detalhes do Cliente</h2>
+<mat-dialog-content>
+  <div class="detalhes-container">
+    <div class="info-section">
+      <h3>Informações Pessoais</h3>
+      <p><strong>Nome:</strong> {{data.nome}}</p>
+      <p><strong>CPF:</strong> {{data.cpf}}</p>
+      <p><strong>Email:</strong> {{data.email}}</p>
+      <p><strong>Status:</strong> <span [class.ativo]="data.ativo" [class.inativo]="!data.ativo">{{data.ativo ? 'Ativo' : 'Inativo'}}</span></p>
+    </div>
+
+    <div class="info-section">
+      <h3>Dados do Empréstimo</h3>
+      <p><strong>Tipo de Empréstimo:</strong> {{data.tipoEmprestimo}}</p>
+      <p><strong>Status do Empréstimo:</strong> {{data.statusEmprestimo}}</p>
+      <p><strong>Valor do Empréstimo:</strong> {{data.valorEmprestimo | currency:'BRL'}}</p>
+      <p><strong>Quantidade de Parcelas:</strong> {{data.qtdParcelas}}</p>
+      <p><strong>Valor da Parcela:</strong> {{data.valorParcela | currency:'BRL'}}</p>
+      <p><strong>Data de Contratação:</strong> {{data.dataContratacao | date:'dd/MM/yyyy'}}</p>
+    </div>
+
+    <div class="info-section">
+      <h3>Datas</h3>
+      <p><strong>Data de Criação:</strong> {{data.dataDeCriacao | date:'dd/MM/yyyy HH:mm'}}</p>
+      <p><strong>Última Alteração:</strong> {{data.dataDeAlteracao | date:'dd/MM/yyyy HH:mm'}}</p>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="fechar()">Fechar</button>
+</mat-dialog-actions>

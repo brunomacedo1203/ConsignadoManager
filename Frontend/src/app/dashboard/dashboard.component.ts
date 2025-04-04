@@ -1,29 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
 import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
   standalone: true,
-  imports: [
-    CommonModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    RouterModule
-  ]
+  imports: [CommonModule, MatCardModule]
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
+  currentUser: any;
+
   constructor(private authService: AuthService) {}
+
+  ngOnInit() {
+    this.authService.currentUser.subscribe(user => {
+      console.log('Usuário atual:', user);
+      this.currentUser = user;
+    });
+  }
 
   logout() {
     this.authService.logout();

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, BehaviorSubject, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { Router } from '@angular/router';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,84 +11,86 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser') || 'null'));
+  constructor(private http: HttpClient) {
+    const storedUser = localStorage.getItem('currentUser');
+    this.currentUserSubject = new BehaviorSubject<any>(storedUser ? JSON.parse(storedUser) : null);
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue() {
+  public get currentUserValue(): any {
     return this.currentUserSubject.value;
   }
 
-  private handleError(error: HttpErrorResponse) {
-    console.error('Erro na requisição:', error);
-    if (error.error instanceof ErrorEvent) {
-      // Erro do lado do cliente
-      console.error('Erro do cliente:', error.error.message);
-      return throwError(() => new Error(error.error.message));
-    } else {
-      // Erro do backend
-      console.error(
-        `Backend retornou código ${error.status}, ` +
-        `corpo: ${JSON.stringify(error.error)}`);
-      return throwError(() => error);
-    }
+  login(email: string, senha: string): Observable<any> {
+    const url = `${environment.apiUrl}/Login`;
+    console.log('URL:', url);
+    console.log('Headers:', new HttpHeaders().set('Content-Type', 'application/json'));
+    console.log('Body:', { email, senha });
+
+    return this.http.post<any>(url, { email, senha }).pipe(
+      map(response => {
+        const token = response.dados;
+        const user = {
+          token: token,
+          email: email
+        };
+        
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
+      }),
+      catchError(error => {
+        console.error('Erro no login:', error);
+        return throwError(error);
+      })
+    );
   }
 
-  login(email: string, senha: string) {
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = JSON.stringify({ email, senha });
-    
-    console.log('URL:', `${environment.apiUrl}/Login`);
-    console.log('Headers:', headers);
-    console.log('Body:', body);
+  register(data: any): Observable<any> {
+    const url = `${environment.apiUrl}/Auth/Register`;
+    console.log('URL:', url);
+    console.log('Headers:', new HttpHeaders().set('Content-Type', 'application/json'));
+    console.log('Body:', data);
 
-    return this.http.post<any>(
-      `${environment.apiUrl}/Login`, 
-      body,
-      { headers: headers }
-    ).pipe(
+    const registerData = {
+      nome: data.nome,
+      usuario: data.usuario,
+      email: data.email,
+      senha: data.senha,
+      cargo: data.cargo
+    };
+
+    return this.http.post<any>(url, registerData).pipe(
       map(response => {
-        console.log('Resposta do login:', response);
-        localStorage.setItem('currentUser', JSON.stringify(response));
-        this.currentUserSubject.next(response);
-        return response;
+        const token = response.dados;
+        const user = {
+          token: token,
+          email: data.email
+        };
+        
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
+        return user;
       }),
-      catchError(this.handleError)
+      catchError(error => {
+        console.error('Erro no registro:', error);
+        return throwError(error);
+      })
     );
   }
 
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
-    this.router.navigate(['/login']);
   }
 
-  register(user: any) {
-    const registerData = {
-      nome: user.nome,
-      usuario: user.usuario,
-      email: user.email,
-      senha: user.senha,
-      confirmacaoSenha: user.confirmacaoSenha
-    };
-    
-    const headers = new HttpHeaders().set('Content-Type', 'application/json');
-    const body = JSON.stringify(registerData);
-
-    console.log('URL:', `${environment.apiUrl}/Register`);
-    console.log('Headers:', headers);
-    console.log('Body:', body);
-
-    return this.http.post(
-      `${environment.apiUrl}/Register`, 
-      body,
-      { headers: headers }
-    ).pipe(
-      catchError(this.handleError)
-    );
+  handleError(error: any) {
+    console.error('Erro:', error);
+    return throwError(error);
+  }
+}
+  handleError(error: any) {
+    console.error('Erro:', error);
+    return throwError(error);
   }
 }

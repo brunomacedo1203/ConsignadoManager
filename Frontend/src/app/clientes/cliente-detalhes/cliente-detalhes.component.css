@@ -1,0 +1,28 @@
+.detalhes-container {
+  padding: 20px 0;
+}
+
+.info-section {
+  margin-bottom: 20px;
+}
+
+.info-section h3 {
+  color: #3f51b5;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.info-section p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.ativo {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.inativo {
+  color: #f44336;
+  font-weight: 500;
+}

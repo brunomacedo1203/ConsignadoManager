@@ -1,34 +1,15 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [mode]="'side'"
-      [opened]="true">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="/dashboard">
-        <mat-icon matListItemIcon>dashboard</mat-icon>
-        <span>Dashboard</span>
-      </a>
-      <a mat-list-item routerLink="/clientes">
-        <mat-icon matListItemIcon>people</mat-icon>
-        <span>Clientes</span>
-      </a>
-      <a mat-list-item routerLink="/emprestimos">
-        <mat-icon matListItemIcon>account_balance</mat-icon>
-        <span>Empréstimos</span>
-      </a>
-      <a mat-list-item (click)="logout()">
-        <mat-icon matListItemIcon>exit_to_app</mat-icon>
-        <span>Sair</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <span>Sistema de Gestão de Empréstimos Consignados</span>
-    </mat-toolbar>
-    <div class="content">
-      <h1>Bem-vindo ao Sistema</h1>
-      <p>Selecione uma opção no menu lateral para começar.</p>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="content">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Bem-vindo(a), {{ currentUser?.nome }}</mat-card-title>
+      <mat-card-subtitle>
+        <div>Email: {{ currentUser?.email }}</div>
+        <div>Cargo: {{ currentUser?.cargo }}</div>
+        <div>Usuário: {{ currentUser?.usuario }}</div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Bem-vindo ao sistema de gestão de empréstimos consignados!</p>
+    </mat-card-content>
+  </mat-card>
+</div>

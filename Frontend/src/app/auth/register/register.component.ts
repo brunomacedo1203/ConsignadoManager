@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { Cargo } from '../../shared/enums/cargo.enum';
 
 @Component({
   selector: 'app-register',
@@ -18,17 +18,18 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
     MatIconModule
   ]
 })
 export class RegisterComponent {
   registerForm: FormGroup;
+  cargos = Object.values(Cargo);
+  errorMessage: string = '';
   isLoading = false;
-  errorMessage = '';
   showPassword = false;
   showConfirmPassword = false;
 
@@ -42,45 +43,44 @@ export class RegisterComponent {
       usuario: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(8)]],
-      confirmacaoSenha: ['', [Validators.required]]
-    }, { validator: this.checkPasswords });
+      confirmacaoSenha: ['', [Validators.required]],
+      cargo: [null, [Validators.required]]
+    }, {
+      validators: this.passwordMatchValidator
+    });
   }
 
-  checkPasswords(group: FormGroup) {
-    const senha = group.get('senha')?.value;
-    const confirmacaoSenha = group.get('confirmacaoSenha')?.value;
-    return senha === confirmacaoSenha ? null : { senhasDiferentes: true };
+  passwordMatchValidator(g: FormGroup) {
+    return g.get('senha')?.value === g.get('confirmacaoSenha')?.value
+      ? null
+      : { 'mismatch': true };
   }
 
   onSubmit() {
-    if (this.registerForm.invalid) {
-      return;
-    }
-
-    this.isLoading = true;
-    this.errorMessage = '';
-
-    const formData = this.registerForm.value;
-    console.log('Enviando dados:', formData);
-
-    this.authService.register(formData).subscribe({
-      next: () => {
-        this.router.navigate(['/login']);
-      },
-      error: (error) => {
-        this.isLoading = false;
-        if (error.error?.errors) {
-          const errors = error.error.errors;
-          const errorMessages = [];
-          for (const field in errors) {
-            errorMessages.push(...errors[field]);
+    if (this.registerForm.valid) {
+      this.isLoading = true;
+      this.errorMessage = '';
+      console.log('Enviando dados:', this.registerForm.value);
+      this.authService.register(this.registerForm.value).subscribe({
+        next: () => {
+          this.router.navigate(['/login']);
+        },
+        error: (error) => {
+          this.isLoading = false;
+          console.error('Erro no registro:', error);
+          if (error.error?.errors) {
+            const errors = error.error.errors;
+            const errorMessages = [];
+            for (const key in errors) {
+              errorMessages.push(errors[key][0]);
+            }
+            this.errorMessage = errorMessages.join(' ');
+          } else {
+            this.errorMessage = 'Erro ao registrar usuário. Por favor, tente novamente.';
           }
-          this.errorMessage = errorMessages.join('\n');
-        } else {
-          this.errorMessage = error.message || 'Ocorreu um erro ao criar a conta.';
         }
-      }
-    });
+      });
+    }
   }
 
   togglePasswordVisibility() {
