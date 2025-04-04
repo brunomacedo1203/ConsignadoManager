@@ -1,1 +1,129 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+:root {
+  --primary-color: #1976d2;
+  --error-color: #f44336;
+  --text-color: #333333;
+  --background-color: #f5f5f5;
+}
+
+/* Estilos globais */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--background-color);
+}
+
+/* Estilos do Login */
+.login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--background-color);
+}
+
+.login-box {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h1 {
+  margin: 0 0 2rem;
+  text-align: center;
+  color: var(--text-color);
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.login-box mat-form-field {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.login-box button[type="submit"] {
+  width: 100%;
+  margin-top: 1rem;
+  height: 48px;
+  font-size: 1rem;
+}
+
+.error-message {
+  color: var(--error-color);
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.register-link a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+/* Estilos do Dashboard */
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.content {
+  padding: 20px;
+}
+
+mat-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+mat-nav-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+mat-nav-list mat-icon {
+  margin-right: 10px;
+}
+
+/* Ajustes para o botão de visibilidade da senha */
+.mat-mdc-form-field-icon-suffix {
+  display: flex;
+  align-items: center;
+}
+
+/* Ajustes para responsividade */
+@media (max-width: 480px) {
+  .login-box {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+}

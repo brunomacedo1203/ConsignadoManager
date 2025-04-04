@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  imports: [RouterModule],
+  imports: [
+    CommonModule,
+    RouterOutlet
+  ],
+  template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {
-  title = 'front_WebAPI_EmprestimoConsignado';
+  title = 'ConsignadoManager';
 }
