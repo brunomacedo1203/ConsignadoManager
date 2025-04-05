@@ -39,10 +39,7 @@ export class AuthService {
         this.currentUserSubject.next(user);
         return user;
       }),
-      catchError(error => {
-        console.error('Erro no login:', error);
-        return throwError(error);
-      })
+      catchError(error => this.handleError(error))
     );
   }
 
@@ -72,10 +69,7 @@ export class AuthService {
         this.currentUserSubject.next(user);
         return user;
       }),
-      catchError(error => {
-        console.error('Erro no registro:', error);
-        return throwError(error);
-      })
+      catchError(error => this.handleError(error))
     );
   }
 
@@ -84,13 +78,8 @@ export class AuthService {
     this.currentUserSubject.next(null);
   }
 
-  handleError(error: any) {
+  private handleError(error: any): Observable<never> {
     console.error('Erro:', error);
-    return throwError(error);
-  }
-}
-  handleError(error: any) {
-    console.error('Erro:', error);
-    return throwError(error);
+    return throwError(() => error);
   }
 }
