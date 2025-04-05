@@ -28,7 +28,7 @@ import { Cargo } from '../../shared/enums/cargo.enum';
 })
 export class RegisterComponent {
   registerForm: FormGroup;
-  cargos = Object.values(Cargo);
+  cargos = Object.keys(Cargo).filter(k => isNaN(Number(k))); // Exibe apenas os nomes dos enums
   errorMessage: string = '';
   isLoading = false;
   showPassword = false;
@@ -40,7 +40,6 @@ export class RegisterComponent {
     private router: Router
   ) {
     this.registerForm = this.formBuilder.group({
-      nome: ['', [Validators.required]],
       usuario: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', [Validators.required, Validators.minLength(8)]],
@@ -54,15 +53,20 @@ export class RegisterComponent {
   passwordMatchValidator(g: FormGroup) {
     return g.get('senha')?.value === g.get('confirmacaoSenha')?.value
       ? null
-      : { 'mismatch': true };
+      : { 'senhasDiferentes': true };
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
       this.isLoading = true;
       this.errorMessage = '';
-      console.log('Enviando dados:', this.registerForm.value);
-      this.authService.register(this.registerForm.value).subscribe({
+
+      const formValue = {
+        ...this.registerForm.value,
+        cargo: Cargo[this.registerForm.value.cargo as keyof typeof Cargo] // Converte string para enum numérico
+      };
+
+      this.authService.register(formValue).subscribe({
         next: () => {
           this.router.navigate(['/login']);
         },

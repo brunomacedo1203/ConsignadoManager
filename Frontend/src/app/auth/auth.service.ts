@@ -23,9 +23,6 @@ export class AuthService {
 
   login(email: string, senha: string): Observable<any> {
     const url = `${environment.apiUrl}/Login`;
-    console.log('URL:', url);
-    console.log('Headers:', new HttpHeaders().set('Content-Type', 'application/json'));
-    console.log('Body:', { email, senha });
 
     return this.http.post<any>(url, { email, senha }).pipe(
       map(response => {
@@ -34,7 +31,7 @@ export class AuthService {
           token: token,
           email: email
         };
-        
+
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
         return user;
@@ -44,16 +41,13 @@ export class AuthService {
   }
 
   register(data: any): Observable<any> {
-    const url = `${environment.apiUrl}/Auth/Register`;
-    console.log('URL:', url);
-    console.log('Headers:', new HttpHeaders().set('Content-Type', 'application/json'));
-    console.log('Body:', data);
+    const url = `${environment.apiUrl}/Register`;
 
     const registerData = {
-      nome: data.nome,
       usuario: data.usuario,
       email: data.email,
       senha: data.senha,
+      confirmacaoSenha: data.confirmacaoSenha,
       cargo: data.cargo
     };
 
@@ -64,7 +58,7 @@ export class AuthService {
           token: token,
           email: data.email
         };
-        
+
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
         return user;

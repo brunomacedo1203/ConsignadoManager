@@ -1,8 +1,8 @@
 export enum Cargo {
-  Administrador = 'Administrador',
-  Atendente = 'Atendente',
-  Operacional = 'Operacional',
-  Supervisor = 'Supervisor',
-  Gerente = 'Gerente',
-  Auditor = 'Auditor'
+  Administrador = 1,
+  Atendente = 2,
+  Operacional = 3,
+  Supervisor = 4,
+  Gerente = 5,
+  Auditor = 6
 }
