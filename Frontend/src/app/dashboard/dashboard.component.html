@@ -2,14 +2,11 @@
   <mat-card>
     <mat-card-header>
       <mat-card-title>Bem-vindo(a), {{ currentUser?.nome }}</mat-card-title>
-      <mat-card-subtitle>
-        <div>Email: {{ currentUser?.email }}</div>
-        <div>Cargo: {{ currentUser?.cargo }}</div>
-        <div>Usuário: {{ currentUser?.usuario }}</div>
+      <mat-card-subtitle class="user-subtitle">
+        <div><strong>Email:</strong> {{ currentUser?.email }}</div>
+        <div><strong>Cargo:</strong> {{ currentUser?.cargo }}</div>
+        <div><strong>Usuário:</strong> {{ currentUser?.usuario }}</div>
       </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Bem-vindo ao sistema de gestão de empréstimos consignados!</p>
-    </mat-card-content>
+    </mat-card-header>    
   </mat-card>
 </div>

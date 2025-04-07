@@ -28,19 +28,12 @@ mat-sidenav-content {
   min-height: 100vh;
 }
 
-.icon-usuario {
-  font-size: 32px; /* aumenta o tamanho real do ícone */
-  vertical-align: middle;
-  line-height: 1;
-  height: 32px;
-  width: 32px;
-}
-
-button[mat-button] {
-  display: flex;
-  align-items: center;
-  gap: 8px; /* espaço entre ícone e nome */
-  padding: 8px 12px; /* espaço interno */
-  height: 48px; /* altura suficiente para o ícone */
+button[mat-button] .icon-usuario {
+  font-size: 32px !important;
+  height: 32px !important;
+  width: 32px !important;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+  display: inline-block !important;
 }
 
