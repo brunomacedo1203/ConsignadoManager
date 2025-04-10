@@ -2,8 +2,50 @@
   padding: 20px;
 }
 
+.actions-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.mat-form-field {
+  width: 40%;
+}
+
+.novo-cliente-btn {
+  height: 50px;
+}
+
+.novo-cliente-texto {
+  font-size: 17px;
+  font-weight: bold;
+
+}
+
 table {
   width: 100%;
+}
+
+.mat-mdc-header-row {
+  background-color: #000000;
+}
+
+.mat-mdc-header-cell {
+  color: white !important;
+  font-size: 1.1em !important;
+  font-weight: bold !important;
+  text-align: center !important;
+}
+
+.mat-mdc-cell {
+  text-align: center !important;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .mat-mdc-row:hover {
@@ -30,6 +72,5 @@ mat-card-title {
 }
 
 .mat-column-acoes {
-  width: 80px;
-  text-align: center;
+  min-width: 200px;
 }
