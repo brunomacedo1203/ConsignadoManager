@@ -18,6 +18,9 @@ mat-toolbar {
   position: sticky;
   top: 0;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .active {
@@ -36,4 +39,3 @@ button[mat-button] .icon-usuario {
   vertical-align: middle !important;
   display: inline-block !important;
 }
-

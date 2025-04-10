@@ -10,22 +10,9 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ClienteService } from '../cliente.service';
+import { ClienteService, ServiceResponse, Cliente } from '../cliente.service';
 import { ClienteDetalhesComponent } from '../cliente-detalhes/cliente-detalhes.component';
-
-interface ApiResponse<T> {
-  dados: T;
-  mensagem: string;
-  sucesso: boolean;
-}
-
-interface Cliente {
-  id: number;
-  nome: string;
-  cpf: string;
-  email: string;
-  ativo: boolean;
-}
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-list',
@@ -56,7 +43,8 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
 
   constructor(
     private clienteService: ClienteService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
     this.dataSource = new MatTableDataSource<Cliente>([]);
   }
@@ -81,15 +69,15 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
 
   carregarClientes() {
     this.isLoading = true;
-    this.clienteService.listarClientes().subscribe({
-      next: (response: ApiResponse<Cliente[]>) => {
+    this.clienteService.getClientes().subscribe({
+      next: (response: ServiceResponse<Cliente[]>) => {
         console.log('Clientes carregados:', response);
         if (response && response.dados) {
           this.dataSource.data = response.dados;
         }
         this.isLoading = false;
       },
-      error: (error) => {
+      error: (error: unknown) => {
         console.error('Erro ao carregar clientes:', error);
         this.isLoading = false;
       }
@@ -101,5 +89,9 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
       width: '600px',
       data: cliente
     });
+  }
+
+  novoCliente(): void {
+    this.router.navigate(['/clientes/novo']);
   }
 }
