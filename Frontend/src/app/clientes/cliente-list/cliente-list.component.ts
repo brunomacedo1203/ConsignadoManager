@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule, MatTable } from '@angular/material/table';
+import { MatTableModule, MatTable, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,6 +10,20 @@ import { MatDialogModule, MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ClienteService } from '../cliente.service';
 import { ClienteDetalhesComponent } from '../cliente-detalhes/cliente-detalhes.component';
+
+interface ApiResponse<T> {
+  dados: T;
+  mensagem: string;
+  sucesso: boolean;
+}
+
+interface Cliente {
+  id: number;
+  nome: string;
+  cpf: string;
+  email: string;
+  ativo: boolean;
+}
 
 @Component({
   selector: 'app-cliente-list',
@@ -30,36 +44,35 @@ import { ClienteDetalhesComponent } from '../cliente-detalhes/cliente-detalhes.c
 })
 export class ClienteListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'ativo', 'acoes'];
-  dataSource: any[] = [];
+  dataSource: MatTableDataSource<Cliente>;
   isLoading = true;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<any>;
 
   constructor(
     private clienteService: ClienteService,
     private dialog: MatDialog
-  ) {}
+  ) {
+    this.dataSource = new MatTableDataSource<Cliente>([]);
+  }
 
   ngOnInit() {
     this.carregarClientes();
   }
 
   ngAfterViewInit() {
-    if (this.table) {
-      this.table.dataSource = this.dataSource;
-    }
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   carregarClientes() {
     this.isLoading = true;
     this.clienteService.listarClientes().subscribe({
-      next: (clientes) => {
-        console.log('Clientes carregados:', clientes);
-        this.dataSource = clientes;
-        if (this.table) {
-          this.table.dataSource = this.dataSource;
+      next: (response: ApiResponse<Cliente[]>) => {
+        console.log('Clientes carregados:', response);
+        if (response && response.dados) {
+          this.dataSource.data = response.dados;
         }
         this.isLoading = false;
       },
@@ -70,7 +83,7 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
     });
   }
 
-  verDetalhes(cliente: any) {
+  verDetalhes(cliente: Cliente) {
     this.dialog.open(ClienteDetalhesComponent, {
       width: '600px',
       data: cliente
