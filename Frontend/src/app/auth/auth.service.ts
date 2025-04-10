@@ -21,15 +21,34 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  private decodeJwt(token: string): any {
+    try {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+
+      return JSON.parse(jsonPayload);
+    } catch (e) {
+      console.error('Erro ao decodificar token:', e);
+      return null;
+    }
+  }
+
   login(email: string, senha: string): Observable<any> {
     const url = `${environment.apiUrl}/Login`;
 
     return this.http.post<any>(url, { email, senha }).pipe(
       map(response => {
         const token = response.dados;
+        const decodedToken = this.decodeJwt(token);
+
         const user = {
           token: token,
-          email: email
+          email: decodedToken.Email,
+          usuario: decodedToken.Username,
+          cargo: decodedToken.Cargo
         };
 
         localStorage.setItem('currentUser', JSON.stringify(user));
@@ -53,15 +72,7 @@ export class AuthService {
 
     return this.http.post<any>(url, registerData).pipe(
       map(response => {
-        const token = response.dados;
-        const user = {
-          token: token,
-          email: data.email
-        };
-
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        this.currentUserSubject.next(user);
-        return user;
+        return response;
       }),
       catchError(error => this.handleError(error))
     );
