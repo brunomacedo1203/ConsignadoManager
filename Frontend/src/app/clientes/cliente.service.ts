@@ -52,4 +52,16 @@ export class ClienteService {
     console.log('Enviando dados para a API:', clienteData);
     return this.http.post<ServiceResponse<Cliente[]>>(this.apiUrl, clienteData);
   }
+
+  updateCliente(cliente: Cliente): Observable<ServiceResponse<Cliente[]>> {
+    const clienteData = {
+      ...cliente,
+      valorEmprestimo: Number(cliente.valorEmprestimo),
+      qtdParcelas: Number(cliente.qtdParcelas),
+      valorParcela: Number(cliente.valorParcela)
+    };
+
+    console.log('Enviando dados para atualização:', clienteData);
+    return this.http.put<ServiceResponse<Cliente[]>>(`${this.apiUrl}/${cliente.id}`, clienteData);
+  }
 }

@@ -91,6 +91,10 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
     });
   }
 
+  editarCliente(cliente: Cliente): void {
+    this.router.navigate(['/clientes/editar', cliente.id]);
+  }
+
   novoCliente(): void {
     this.router.navigate(['/clientes/novo']);
   }

@@ -55,7 +55,7 @@
                 <button mat-icon-button color="primary" (click)="verDetalhes(cliente)" matTooltip="Ver detalhes">
                   <mat-icon>visibility</mat-icon>
                 </button>
-                <button mat-icon-button color="accent" matTooltip="Editar cliente">
+                <button mat-icon-button color="accent" (click)="editarCliente(cliente)" matTooltip="Editar cliente">
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button [color]="cliente.ativo ? 'warn' : 'primary'"
