@@ -30,12 +30,12 @@ import { Location } from '@angular/common';
   ]
 })
 export class ClienteEditComponent implements OnInit {
-  clienteForm: FormGroup;
+  clienteForm!: FormGroup;
   clienteId: number;
   tiposEmprestimo = ['INSS', 'ServidorPublico', 'Militar', 'Privado'];
   statusEmprestimo = ['EmAnalise', 'Aprovado', 'Reprovado', 'Liquidado', 'Inadimplente'];
   isFormChanged = false;
-  originalFormValue: any;
+  private initialFormValue: any;
 
   constructor(
     private fb: FormBuilder,
@@ -45,10 +45,13 @@ export class ClienteEditComponent implements OnInit {
     private location: Location
   ) {
     this.clienteId = Number(this.route.snapshot.paramMap.get('id'));
+  }
+
+  ngOnInit() {
     this.clienteForm = this.fb.group({
-      nome: ['', Validators.required],
-      cpf: ['', [Validators.required, Validators.pattern(/^\d{11}$/)]],
-      email: ['', [Validators.required, Validators.email]],
+      nome: ['', [Validators.required, Validators.minLength(3)]],
+      cpf: [{ value: '', disabled: true }, [Validators.required, Validators.pattern(/^\d{11}$/)]],
+      email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
       tipoEmprestimo: ['', Validators.required],
       statusEmprestimo: ['', Validators.required],
       valorEmprestimo: [0, [Validators.required, Validators.min(0)]],
@@ -57,16 +60,11 @@ export class ClienteEditComponent implements OnInit {
       dataContratacao: [new Date(), Validators.required]
     });
 
-    this.isFormChanged = false;
-
-    Object.keys(this.clienteForm.controls).forEach(key => {
-      this.clienteForm.get(key)?.valueChanges.subscribe(() => {
-        this.isFormChanged = true;
-      });
+    // Monitora mudanças no formulário
+    this.clienteForm.valueChanges.subscribe(() => {
+      this.isFormChanged = JSON.stringify(this.clienteForm.getRawValue()) !== JSON.stringify(this.initialFormValue);
     });
-  }
 
-  ngOnInit(): void {
     this.carregarCliente();
   }
 
@@ -86,6 +84,7 @@ export class ClienteEditComponent implements OnInit {
             valorParcela: cliente.valorParcela,
             dataContratacao: new Date(cliente.dataContratacao)
           });
+          this.initialFormValue = this.clienteForm.getRawValue();
           this.isFormChanged = false;
         }
       },
@@ -96,23 +95,32 @@ export class ClienteEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (this.clienteForm.valid) {
-      const clienteData = {
-        ...this.clienteForm.value,
-        id: this.clienteId
-      };
-
-      this.clienteService.updateCliente(clienteData).subscribe({
-        next: (response) => {
-          if (response.sucesso) {
-            this.router.navigate(['/clientes']);
-          }
-        },
-        error: (error) => {
-          console.error('Erro ao atualizar cliente:', error);
-        }
-      });
+    if (this.clienteForm.invalid) {
+      return;
     }
+
+    const clienteData = {
+      id: this.clienteId,
+      ...this.clienteForm.getRawValue(),
+      valorEmprestimo: Number(this.clienteForm.get('valorEmprestimo')?.value),
+      qtdParcelas: Number(this.clienteForm.get('qtdParcelas')?.value),
+      valorParcela: Number(this.clienteForm.get('valorParcela')?.value),
+      dataContratacao: new Date(this.clienteForm.get('dataContratacao')?.value).toISOString(),
+      ativo: true
+    };
+
+    this.clienteService.updateCliente(clienteData).subscribe({
+      next: (response) => {
+        if (response.sucesso) {
+          this.router.navigate(['/clientes']);
+        } else {
+          console.error('Erro ao atualizar cliente:', response.mensagem);
+        }
+      },
+      error: (error) => {
+        console.error('Erro ao atualizar cliente:', error);
+      }
+    });
   }
 
   voltar(): void {

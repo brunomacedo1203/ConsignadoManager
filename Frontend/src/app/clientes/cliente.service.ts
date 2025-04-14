@@ -18,7 +18,7 @@ export interface Cliente {
 }
 
 export interface ServiceResponse<T> {
-  dados: T;
+  dados?: T;
   mensagem: string;
   sucesso: boolean;
 }
@@ -40,16 +40,14 @@ export class ClienteService {
   }
 
   createCliente(cliente: Omit<Cliente, 'id' | 'ativo'>): Observable<ServiceResponse<Cliente[]>> {
-    // Remove campos que não devem ser enviados na criação
     const clienteData = {
       ...cliente,
-      // Converte os valores numéricos para garantir que sejam enviados como números
       valorEmprestimo: Number(cliente.valorEmprestimo),
       qtdParcelas: Number(cliente.qtdParcelas),
-      valorParcela: Number(cliente.valorParcela)
+      valorParcela: Number(cliente.valorParcela),
+      dataContratacao: cliente.dataContratacao.toISOString()
     };
 
-    console.log('Enviando dados para a API:', clienteData);
     return this.http.post<ServiceResponse<Cliente[]>>(this.apiUrl, clienteData);
   }
 
@@ -58,10 +56,12 @@ export class ClienteService {
       ...cliente,
       valorEmprestimo: Number(cliente.valorEmprestimo),
       qtdParcelas: Number(cliente.qtdParcelas),
-      valorParcela: Number(cliente.valorParcela)
+      valorParcela: Number(cliente.valorParcela),
+      dataContratacao: typeof cliente.dataContratacao === 'string'
+        ? cliente.dataContratacao
+        : new Date(cliente.dataContratacao).toISOString()
     };
 
-    console.log('Enviando dados para atualização:', clienteData);
-    return this.http.put<ServiceResponse<Cliente[]>>(`${this.apiUrl}/${cliente.id}`, clienteData);
+    return this.http.put<ServiceResponse<Cliente[]>>(this.apiUrl, clienteData);
   }
 }
