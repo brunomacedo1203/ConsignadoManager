@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ClienteService, ServiceResponse, Cliente } from '../cliente.service';
 import { ClienteDetalhesComponent } from '../cliente-detalhes/cliente-detalhes.component';
+import { ConfirmarInativacaoDialogComponent } from '../confirmar-inativacao-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -97,5 +98,32 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
 
   novoCliente(): void {
     this.router.navigate(['/clientes/novo']);
+  }
+
+  inativarCliente(cliente: Cliente): void {
+    const dialogRef = this.dialog.open(ConfirmarInativacaoDialogComponent, {
+      width: '350px',
+      data: { cliente }
+    });
+
+    dialogRef.afterClosed().subscribe(confirmado => {
+      if (confirmado) {
+        // Chama o método do backend para inativar o cliente
+        const clienteAtualizado = { ...cliente, ativo: false };
+        this.clienteService.updateCliente(clienteAtualizado).subscribe({
+          next: (response) => {
+            if (response && response.sucesso) {
+              this.carregarClientes(); // Atualiza a lista
+            } else {
+              // Pode exibir um snackbar/toast de erro se desejar
+              console.error('Erro ao inativar cliente:', response?.mensagem);
+            }
+          },
+          error: (error) => {
+            console.error('Erro ao inativar cliente:', error);
+          }
+        });
+      }
+    });
   }
 }

@@ -59,8 +59,14 @@
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button [color]="cliente.ativo ? 'warn' : 'primary'"
-                  [matTooltip]="cliente.ativo ? 'Inativar cliente' : 'Ativar cliente'">
-                  <mat-icon>{{cliente.ativo ? 'block' : 'check_circle'}}</mat-icon>
+                  [matTooltip]="cliente.ativo ? 'Inativar cliente' : 'Ativar cliente'"
+                  (click)="inativarCliente(cliente)" *ngIf="cliente.ativo">
+                  <mat-icon>block</mat-icon>
+                </button>
+                <button mat-icon-button [color]="!cliente.ativo ? 'primary' : 'warn'"
+                  [matTooltip]="!cliente.ativo ? 'Ativar cliente' : 'Inativar cliente'"
+                  disabled *ngIf="!cliente.ativo">
+                  <mat-icon>check_circle</mat-icon>
                 </button>
                 <button mat-icon-button color="warn" matTooltip="Excluir cliente">
                   <mat-icon>delete</mat-icon>
