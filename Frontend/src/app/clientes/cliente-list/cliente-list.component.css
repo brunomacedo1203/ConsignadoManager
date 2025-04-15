@@ -74,3 +74,10 @@ mat-card-title {
 .mat-column-acoes {
   min-width: 200px;
 }
+
+/* Estilo visual para botões sem permissão */
+.no-access {
+  opacity: 0.5;
+  pointer-events: auto; /* permite hover e tooltip */
+  cursor: not-allowed;
+}

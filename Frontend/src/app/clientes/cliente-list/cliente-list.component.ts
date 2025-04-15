@@ -15,6 +15,7 @@ import { ClienteDetalhesComponent } from '../cliente-detalhes/cliente-detalhes.c
 import { ConfirmarInativacaoDialogComponent } from '../confirmar-inativacao-dialog.component';
 import { ConfirmarExclusaoDialogComponent } from '../confirmar-exclusao-dialog.component';
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-cliente-list',
@@ -39,6 +40,7 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'ativo', 'acoes'];
   dataSource: MatTableDataSource<Cliente>;
   isLoading = true;
+  isAdmin = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -46,9 +48,13 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
   constructor(
     private clienteService: ClienteService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.dataSource = new MatTableDataSource<Cliente>([]);
+    // Verifica se o usuário é administrador
+    const user = this.authService.currentUserValue;
+    this.isAdmin = user && user.cargo === 'Administrador';
   }
 
   ngOnInit() {
@@ -149,5 +155,9 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
         });
       }
     });
+  }
+
+  mostrarSemPermissao() {
+    alert('Você não tem permissão para realizar esta ação.');
   }
 }

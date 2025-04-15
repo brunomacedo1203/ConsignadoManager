@@ -11,7 +11,10 @@
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" (click)="novoCliente()">
+        <button mat-raised-button color="primary"
+          (click)="isAdmin ? novoCliente() : null"
+          [ngClass]="{'no-access': !isAdmin}"
+          matTooltip="{{!isAdmin ? 'Você não tem permissão para realizar esta ação.' : 'Cadastrar novo cliente'}}">
           <mat-icon>add</mat-icon>
           Novo Cliente
         </button>
@@ -55,20 +58,27 @@
                 <button mat-icon-button color="primary" (click)="verDetalhes(cliente)" matTooltip="Ver detalhes">
                   <mat-icon>visibility</mat-icon>
                 </button>
-                <button mat-icon-button color="accent" (click)="editarCliente(cliente)" matTooltip="Editar cliente">
+                <button mat-icon-button color="accent"
+                  (click)="isAdmin ? editarCliente(cliente) : null"
+                  [ngClass]="{'no-access': !isAdmin}"
+                  matTooltip="{{!isAdmin ? 'Você não tem permissão para realizar esta ação.' : 'Editar cliente'}}">
                   <mat-icon>edit</mat-icon>
                 </button>
                 <button mat-icon-button [color]="cliente.ativo ? 'warn' : 'primary'"
-                  [matTooltip]="cliente.ativo ? 'Inativar cliente' : 'Ativar cliente'"
-                  (click)="inativarCliente(cliente)" *ngIf="cliente.ativo">
+                  (click)="isAdmin ? inativarCliente(cliente) : null"
+                  [ngClass]="{'no-access': !isAdmin}"
+                  matTooltip="{{!isAdmin ? 'Você não tem permissão para realizar esta ação.' : (cliente.ativo ? 'Inativar cliente' : 'Ativar cliente')}}"
+                  *ngIf="cliente.ativo">
                   <mat-icon>block</mat-icon>
                 </button>
                 <button mat-icon-button [color]="!cliente.ativo ? 'primary' : 'warn'"
-                  [matTooltip]="!cliente.ativo ? 'Ativar cliente' : 'Inativar cliente'"
                   disabled *ngIf="!cliente.ativo">
                   <mat-icon>check_circle</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" matTooltip="Excluir cliente" (click)="excluirCliente(cliente)">
+                <button mat-icon-button color="warn"
+                  (click)="isAdmin ? excluirCliente(cliente) : null"
+                  [ngClass]="{'no-access': !isAdmin}"
+                  matTooltip="{{!isAdmin ? 'Você não tem permissão para realizar esta ação.' : 'Excluir cliente'}}">
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>
