@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ClienteService, ServiceResponse, Cliente } from '../cliente.service';
 import { ClienteDetalhesComponent } from '../cliente-detalhes/cliente-detalhes.component';
 import { ConfirmarInativacaoDialogComponent } from '../confirmar-inativacao-dialog.component';
+import { ConfirmarExclusaoDialogComponent } from '../confirmar-exclusao-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -108,19 +109,42 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(confirmado => {
       if (confirmado) {
-        // Chama o método do backend para inativar o cliente
-        const clienteAtualizado = { ...cliente, ativo: false };
-        this.clienteService.updateCliente(clienteAtualizado).subscribe({
+        // Agora chama o endpoint correto de inativação
+        this.clienteService.inativarCliente(cliente.id).subscribe({
           next: (response) => {
             if (response && response.sucesso) {
               this.carregarClientes(); // Atualiza a lista
             } else {
-              // Pode exibir um snackbar/toast de erro se desejar
               console.error('Erro ao inativar cliente:', response?.mensagem);
             }
           },
           error: (error) => {
             console.error('Erro ao inativar cliente:', error);
+          }
+        });
+      }
+    });
+  }
+
+  excluirCliente(cliente: Cliente): void {
+    const dialogRef = this.dialog.open(ConfirmarExclusaoDialogComponent, {
+      width: '350px',
+      data: { cliente }
+    });
+
+    dialogRef.afterClosed().subscribe(confirmado => {
+      if (confirmado) {
+        this.clienteService.excluirCliente(cliente.id).subscribe({
+          next: (response) => {
+            if (response && response.sucesso) {
+              this.carregarClientes();
+              this.router.navigate(['/clientes']);
+            } else {
+              console.error('Erro ao excluir cliente:', response?.mensagem);
+            }
+          },
+          error: (error) => {
+            console.error('Erro ao excluir cliente:', error);
           }
         });
       }

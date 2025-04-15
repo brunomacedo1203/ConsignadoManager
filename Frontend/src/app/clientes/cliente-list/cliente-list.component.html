@@ -68,7 +68,7 @@
                   disabled *ngIf="!cliente.ativo">
                   <mat-icon>check_circle</mat-icon>
                 </button>
-                <button mat-icon-button color="warn" matTooltip="Excluir cliente">
+                <button mat-icon-button color="warn" matTooltip="Excluir cliente" (click)="excluirCliente(cliente)">
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>

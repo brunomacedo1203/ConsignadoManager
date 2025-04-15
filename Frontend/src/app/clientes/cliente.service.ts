@@ -64,4 +64,14 @@ export class ClienteService {
 
     return this.http.put<ServiceResponse<Cliente[]>>(this.apiUrl, clienteData);
   }
+
+  // Corrigir: endpoint correto para inativar cliente
+  inativarCliente(id: number): Observable<ServiceResponse<Cliente[]>> {
+    return this.http.put<ServiceResponse<Cliente[]>>(`${this.apiUrl}/inativaCliente?id=${id}`, {});
+  }
+
+  // Método para excluir cliente via endpoint dedicado
+  excluirCliente(id: number): Observable<ServiceResponse<Cliente[]>> {
+    return this.http.delete<ServiceResponse<Cliente[]>>(`${this.apiUrl}?id=${id}`);
+  }
 }
