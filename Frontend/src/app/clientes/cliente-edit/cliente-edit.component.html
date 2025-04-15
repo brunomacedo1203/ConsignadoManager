@@ -16,12 +16,12 @@
 
           <mat-form-field appearance="outline">
             <mat-label>CPF</mat-label>
-            <input matInput formControlName="cpf" placeholder="CPF do cliente">
-            <mat-error *ngIf="clienteForm.get('cpf')?.hasError('required')">
+            <input matInput formControlName="cpf" placeholder="CPF do cliente" [errorStateMatcher]="showErrorOnDirty">
+            <mat-error *ngIf="clienteForm.get('cpf')?.hasError('required') && (clienteForm.get('cpf')?.touched || clienteForm.get('cpf')?.dirty)">
               CPF é obrigatório
             </mat-error>
-            <mat-error *ngIf="clienteForm.get('cpf')?.hasError('pattern')">
-              CPF deve conter 11 dígitos
+            <mat-error *ngIf="clienteForm.get('cpf')?.hasError('pattern') && (clienteForm.get('cpf')?.touched || clienteForm.get('cpf')?.dirty)">
+              CPF deve estar no formato 000.000.000-00
             </mat-error>
           </mat-form-field>
         </div>
@@ -29,12 +29,12 @@
         <div class="form-row">
           <mat-form-field appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="Email do cliente">
-            <mat-error *ngIf="clienteForm.get('email')?.hasError('required')">
+            <input matInput formControlName="email" placeholder="Email do cliente" [errorStateMatcher]="showErrorOnDirty">
+            <mat-error *ngIf="clienteForm.get('email')?.hasError('required') && (clienteForm.get('email')?.touched || clienteForm.get('email')?.dirty)">
               Email é obrigatório
             </mat-error>
-            <mat-error *ngIf="clienteForm.get('email')?.hasError('email')">
-              Email inválido
+            <mat-error *ngIf="clienteForm.get('email')?.hasError('pattern') && (clienteForm.get('email')?.touched || clienteForm.get('email')?.dirty)">
+              Email deve estar no formato nome&#64;dominio.com
             </mat-error>
           </mat-form-field>
 
@@ -114,7 +114,7 @@
 
         <div class="button-row">
           <button mat-button type="button" (click)="voltar()">Voltar</button>
-          <button mat-raised-button color="primary" type="submit" [disabled]="!isFormChanged">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!clienteForm.valid || !isFormChanged">
             Concluir
           </button>
         </div>

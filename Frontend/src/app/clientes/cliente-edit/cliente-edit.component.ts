@@ -11,6 +11,15 @@ import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClienteService, ServiceResponse, Cliente } from '../cliente.service';
 import { Location } from '@angular/common';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+
+// ErrorStateMatcher personalizado: só mostra erro se dirty e inválido
+export class ShowErrorOnDirtyStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    return !!(control && control.invalid && control.dirty);
+  }
+}
 
 @Component({
   selector: 'app-cliente-edit',
@@ -40,6 +49,8 @@ export class ClienteEditComponent implements OnInit {
   private clienteOriginal: Cliente | null = null;
   private isInitialLoad = true;
 
+  showErrorOnDirty = new ShowErrorOnDirtyStateMatcher();
+
   constructor(
     private fb: FormBuilder,
     private clienteService: ClienteService,
@@ -53,8 +64,8 @@ export class ClienteEditComponent implements OnInit {
   ngOnInit() {
     this.clienteForm = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
-      cpf: ['', [Validators.required, Validators.pattern(/^\d{11}$/)]],
-      email: ['', [Validators.required, Validators.email]],
+      cpf: ['', [Validators.required, Validators.pattern(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)]],
+      email: ['', [Validators.required, Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]],
       tipoEmprestimo: ['', Validators.required],
       statusEmprestimo: ['', Validators.required],
       valorEmprestimo: [0, [Validators.required, Validators.min(0)]],
@@ -113,6 +124,12 @@ export class ClienteEditComponent implements OnInit {
       return;
     }
 
+    // Impede envio se o formulário estiver inválido
+    if (!this.clienteForm.valid) {
+      this.clienteForm.markAllAsTouched(); // Mostra erros
+      return;
+    }
+
     this.isSubmitting = true;
 
     const formValue = this.clienteForm.getRawValue();
@@ -125,12 +142,11 @@ export class ClienteEditComponent implements OnInit {
         // Comparação direta para strings
         if (formValue[key] !== this.initialFormValue[key]) {
           camposAlterados[key] = formValue[key];
-          console.log(`Campo ${key} alterado de '${this.initialFormValue[key]}' para '${formValue[key]}'`);
         }
       } else if (key === 'dataContratacao') {
-        // Trata datas separadamente
-        const dataOriginal = new Date(this.initialFormValue[key]).toISOString().split('T')[0];
-        const dataAtual = new Date(formValue[key]).toISOString().split('T')[0];
+        // Garante que a data seja convertida corretamente
+        const dataOriginal = new Date(this.initialFormValue[key]).toISOString();
+        const dataAtual = new Date(formValue[key]).toISOString();
         if (dataOriginal !== dataAtual) {
           camposAlterados[key] = formValue[key];
         }

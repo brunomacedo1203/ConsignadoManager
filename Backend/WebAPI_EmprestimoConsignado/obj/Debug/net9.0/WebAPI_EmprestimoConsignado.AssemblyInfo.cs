@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebAPI_EmprestimoConsignado")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+18ce3a6966ea38f8fa3827cae1eca1e9897d14e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad537086a47ce1ada248ec2cff2b1a8a220db0a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebAPI_EmprestimoConsignado")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebAPI_EmprestimoConsignado")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
