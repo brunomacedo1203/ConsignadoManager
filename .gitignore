@@ -215,7 +215,7 @@ ClientBin/
 orleans.codegen.cs
 
 # Pasta de prints (screenshots)
-/Prints/
+#/Prints/
 
 # Ignorar arquivos de configuração específicos do seu projeto
 appsettings.json
