@@ -214,6 +214,9 @@ ClientBin/
 *.publishsettings
 orleans.codegen.cs
 
+# Pasta de prints (screenshots)
+/Prints/
+
 # Ignorar arquivos de configuração específicos do seu projeto
 appsettings.json
 appsettings.Development.json
