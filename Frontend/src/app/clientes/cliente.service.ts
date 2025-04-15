@@ -40,12 +40,16 @@ export class ClienteService {
   }
 
   createCliente(cliente: Omit<Cliente, 'id' | 'ativo'>): Observable<ServiceResponse<Cliente[]>> {
+    const dataContratacao = (cliente.dataContratacao instanceof Date)
+      ? cliente.dataContratacao.toISOString()
+      : new Date(cliente.dataContratacao).toISOString();
+
     const clienteData = {
       ...cliente,
       valorEmprestimo: Number(cliente.valorEmprestimo),
       qtdParcelas: Number(cliente.qtdParcelas),
       valorParcela: Number(cliente.valorParcela),
-      dataContratacao: cliente.dataContratacao.toISOString()
+      dataContratacao
     };
 
     return this.http.post<ServiceResponse<Cliente[]>>(this.apiUrl, clienteData);
