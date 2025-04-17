@@ -129,21 +129,27 @@ Authorization: Bearer {jwt_token}
 ### 1. Tela de Login
 [![Login](Prints/Login.png)](Prints/Login.png)
 <p align="center"><i>Tela inicial para autenticação do usuário.</i></p>
+
 ### 2. Criar Conta
 [![Criar Conta](Prints/Criar_Conta.png)](Prints/Criar_Conta.png)
 <p align="center"><i>Formulário para novos usuários criarem sua conta.</i></p>
+
 ### 3. Lista de Usuários
 [![Usuários](Prints/Usuarios.png)](Prints/Usuarios.png)
 <p align="center"><i>Visualização dos usuários cadastrados.</i></p>
+
 ### 4. Lista de Clientes
 [![Clientes](Prints/Clientes.png)](Prints/Clientes.png)
 <p align="center"><i>Clientes cadastrados, com busca, paginação e ações.</i></p>
+
 ### 5. Cadastrar Novo Cliente
 [![Cadastrar novo cliente](Prints/Cadastrar_novo_cliente.png)](Prints/Cadastrar_novo_cliente.png)
 <p align="center"><i>Adicionar novo cliente ao sistema.</i></p>
+
 ### 6. Editar Cliente
 [![Editar Cliente](Prints/Editar_Cliente.png)](Prints/Editar_Cliente.png)
 <p align="center"><i>Editar dados de um cliente existente.</i></p>
+
 ### 7. Detalhes do Cliente
 [![Detalhes do Cliente](Prints/Detalhes_Cliente.png)](Prints/Detalhes_Cliente.png)
 <p align="center"><i>Visualização detalhada de um cliente.</i></p>
@@ -304,21 +310,27 @@ Authorization: Bearer {jwt_token}
 ### 1. Login Screen
 [![Login](Prints/Login.png)](Prints/Login.png)
 <p align="center"><i>User authentication screen.</i></p>
+
 ### 2. Create Account
 [![Criar Conta](Prints/Criar_Conta.png)](Prints/Criar_Conta.png)
 <p align="center"><i>Form for new users to register.</i></p>
+
 ### 3. User List
 [![Usuários](Prints/Usuarios.png)](Prints/Usuarios.png)
 <p align="center"><i>View of registered users.</i></p>
+
 ### 4. Client List
 [![Clientes](Prints/Clientes.png)](Prints/Clientes.png)
 <p align="center"><i>Registered clients, with search, pagination, actions.</i></p>
+
 ### 5. Register New Client
 [![Cadastrar novo cliente](Prints/Cadastrar_novo_cliente.png)](Prints/Cadastrar_novo_cliente.png)
 <p align="center"><i>Add a new client to the system.</i></p>
+
 ### 6. Edit Client
 [![Editar Cliente](Prints/Editar_Cliente.png)](Prints/Editar_Cliente.png)
 <p align="center"><i>Edit an existing client's data.</i></p>
+
 ### 7. Client Details
 [![Detalhes do Cliente](Prints/Detalhes_Cliente.png)](Prints/Detalhes_Cliente.png)
 <p align="center"><i>Detailed view of a client.</i></p>
