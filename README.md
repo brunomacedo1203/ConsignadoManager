@@ -1,12 +1,12 @@
-# 🏦 Sistema de Gestão de Empréstimos Consignados
+# Sistema de Gestão de Empréstimos Consignados
 
-[🇧🇷 Português](#português) | [🇺🇸 English](#english)
+[ Português](#português) | [ English](#english)
 
 ---
 
-# <a name="português"></a>🇧🇷 Português
+# <a name="português"></a> Português
 
-## 📑 Sumário
+## Sumário
 - [Visão Geral](#visão-geral)
 - [Badges](#badges)
 - [Funcionalidades](#funcionalidades)
@@ -32,12 +32,12 @@ Sistema completo de Gestão de Empréstimos Consignados desenvolvido em .NET 9.0
 [![.NET](https://img.shields.io/badge/Backend-.NET%209.0-blue)](https://dotnet.microsoft.com/)
 
 ## Funcionalidades
-- ✅ Autenticação e autorização de usuários (JWT)
-- 👤 Cadastro e login de usuários
-- 💼 CRUD completo de clientes
-- 🔐 Endpoints seguros
-- 📱 Frontend Angular responsivo
-- 📊 Controle de empréstimos consignados
+- Autenticação e autorização de usuários (JWT)
+- Cadastro e login de usuários
+- CRUD completo de clientes
+- Endpoints seguros
+- Frontend Angular responsivo
+- Controle de empréstimos consignados
 
 ## Tecnologias
 - Backend: .NET 9.0, ASP.NET Core Web API, Entity Framework Core, Oracle Database
@@ -130,22 +130,22 @@ Authorization: Bearer {jwt_token}
 [![Login](Prints/Login.png)](Prints/Login.png)
 <p align="center"><i>Tela inicial para autenticação do usuário.</i></p>
 ### 2. Criar Conta
-[![Criar Conta](Prints/Criar%20Conta.png)](Prints/Criar%20Conta.png)
+[![Criar Conta](Prints/Criar_Conta.png)](Prints/Criar_Conta.png)
 <p align="center"><i>Formulário para novos usuários criarem sua conta.</i></p>
 ### 3. Lista de Usuários
-[![Usuários](Prints/Usuários.png)](Prints/Usuários.png)
+[![Usuários](Prints/Usuarios.png)](Prints/Usuarios.png)
 <p align="center"><i>Visualização dos usuários cadastrados.</i></p>
 ### 4. Lista de Clientes
 [![Clientes](Prints/Clientes.png)](Prints/Clientes.png)
 <p align="center"><i>Clientes cadastrados, com busca, paginação e ações.</i></p>
 ### 5. Cadastrar Novo Cliente
-[![Cadastrar novo cliente](Prints/Cadastrar%20novo%20cliente.png)](Prints/Cadastrar%20novo%20cliente.png)
+[![Cadastrar novo cliente](Prints/Cadastrar_novo_cliente.png)](Prints/Cadastrar_novo_cliente.png)
 <p align="center"><i>Adicionar novo cliente ao sistema.</i></p>
 ### 6. Editar Cliente
-[![Editar Cliente](Prints/Editar%20Cliente.png)](Prints/Editar%20Cliente.png)
+[![Editar Cliente](Prints/Editar_Cliente.png)](Prints/Editar_Cliente.png)
 <p align="center"><i>Editar dados de um cliente existente.</i></p>
 ### 7. Detalhes do Cliente
-[![Detalhes do Cliente](Prints/Detalhes%20do%20%20Cliente.png)](Prints/Detalhes%20do%20%20Cliente.png)
+[![Detalhes do Cliente](Prints/Detalhes_Cliente.png)](Prints/Detalhes_Cliente.png)
 <p align="center"><i>Visualização detalhada de um cliente.</i></p>
 
 ## Estrutura de Diretórios
@@ -179,7 +179,7 @@ Backend/
 
 ---
 
-# <a name="english"></a>🇺🇸 English
+# <a name="english"></a> English
 
 ## Table of Contents
 - [Overview](#overview)
@@ -207,12 +207,12 @@ A comprehensive Payroll Loan Management System built with .NET 9.0 (ASP.NET Core
 [![.NET](https://img.shields.io/badge/Backend-.NET%209.0-blue)](https://dotnet.microsoft.com/)
 
 ## Features
-- ✅ User Authentication and Authorization (JWT)
-- 👤 User Registration and Login
-- 💼 Full Client CRUD Management
-- 🔐 Secure API Endpoints
-- 📱 Responsive Angular Frontend
-- 📊 Consigned Loan Tracking
+- User Authentication and Authorization (JWT)
+- User Registration and Login
+- Full Client CRUD Management
+- Secure API Endpoints
+- Responsive Angular Frontend
+- Consigned Loan Tracking
 
 ## Technologies
 - Backend: .NET 9.0, ASP.NET Core Web API, Entity Framework Core, Oracle Database
@@ -305,22 +305,22 @@ Authorization: Bearer {jwt_token}
 [![Login](Prints/Login.png)](Prints/Login.png)
 <p align="center"><i>User authentication screen.</i></p>
 ### 2. Create Account
-[![Criar Conta](Prints/Criar%20Conta.png)](Prints/Criar%20Conta.png)
+[![Criar Conta](Prints/Criar_Conta.png)](Prints/Criar_Conta.png)
 <p align="center"><i>Form for new users to register.</i></p>
 ### 3. User List
-[![Usuários](Prints/Usuários.png)](Prints/Usuários.png)
+[![Usuários](Prints/Usuarios.png)](Prints/Usuarios.png)
 <p align="center"><i>View of registered users.</i></p>
 ### 4. Client List
 [![Clientes](Prints/Clientes.png)](Prints/Clientes.png)
 <p align="center"><i>Registered clients, with search, pagination, actions.</i></p>
 ### 5. Register New Client
-[![Cadastrar novo cliente](Prints/Cadastrar%20novo%20cliente.png)](Prints/Cadastrar%20novo%20cliente.png)
+[![Cadastrar novo cliente](Prints/Cadastrar_novo_cliente.png)](Prints/Cadastrar_novo_cliente.png)
 <p align="center"><i>Add a new client to the system.</i></p>
 ### 6. Edit Client
-[![Editar Cliente](Prints/Editar%20Cliente.png)](Prints/Editar%20Cliente.png)
+[![Editar Cliente](Prints/Editar_Cliente.png)](Prints/Editar_Cliente.png)
 <p align="center"><i>Edit an existing client's data.</i></p>
 ### 7. Client Details
-[![Detalhes do Cliente](Prints/Detalhes%20do%20%20Cliente.png)](Prints/Detalhes%20do%20%20Cliente.png)
+[![Detalhes do Cliente](Prints/Detalhes_Cliente.png)](Prints/Detalhes_Cliente.png)
 <p align="center"><i>Detailed view of a client.</i></p>
 
 ## Project Structure
