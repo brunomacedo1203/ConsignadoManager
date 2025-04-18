@@ -8,10 +8,11 @@
 
 ## Sumário
 - [Visão Geral](#visão-geral)
-- [Badges](#badges)
+- [Rodando com Docker](#rodando-com-docker)
+- [Instalação (Sem Docker)](#instalação)
 - [Funcionalidades](#funcionalidades)
 - [Tecnologias](#tecnologias)
-- [Instalação](#instalação)
+- [Configuração do Banco de Dados Oracle Local](#configuracao-do-banco-de-dados-oracle-local)
 - [Frontend](#frontend)
 - [Backend](#backend)
 - [Exemplos de Uso](#exemplos-de-uso)
@@ -22,28 +23,80 @@
 
 ---
 
+## Como executar o projeto
+
+Existem dois caminhos para executar a aplicação:
+
+1. **Com Docker** (recomendado): Sobe todos os serviços automaticamente em containers.
+2. **Sem Docker** (tradicional/manual): Instala e configura cada parte separadamente.
+
+Escolha o método que preferir e siga as instruções correspondentes abaixo.
+
 ## Visão Geral
-Sistema completo de Gestão de Empréstimos Consignados desenvolvido em .NET 9.0 (ASP.NET Core Web API) e Angular. Possui autenticação JWT, integração com banco Oracle, gestão de clientes e empréstimos, e frontend moderno e responsivo.
 
-## Badges
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/seu-usuario/seu-repo/actions)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Angular](https://img.shields.io/badge/Frontend-Angular-red)](https://angular.io/)
-[![.NET](https://img.shields.io/badge/Backend-.NET%209.0-blue)](https://dotnet.microsoft.com/)
+O Sistema de Gestão de Empréstimos Consignados é uma solução completa para administração de clientes, contratos de empréstimo e controle financeiro de operações consignadas. Desenvolvido em .NET 9.0 (ASP.NET Core Web API) e Angular, o sistema oferece uma interface moderna e segura, com autenticação JWT e integração total com banco Oracle.
 
-## Funcionalidades
-- Autenticação e autorização de usuários (JWT)
-- Cadastro e login de usuários
-- CRUD completo de clientes
-- Endpoints seguros
-- Frontend Angular responsivo
-- Controle de empréstimos consignados
+### Funcionalidades Principais
 
-## Tecnologias
-- Backend: .NET 9.0, ASP.NET Core Web API, Entity Framework Core, Oracle Database
-- Frontend: Angular 17+, Angular Material, RxJS, TypeScript, HTML5, SCSS
+- **Cadastro, consulta, edição e exclusão de clientes**  
+  Gerencie todos os dados dos clientes, incluindo informações pessoais e documentos.
 
-## Instalação
+- **Gestão de empréstimos consignados**  
+  Crie, visualize, edite e exclua contratos de empréstimo associados a clientes, com controle de valores, taxas, datas e condições.
+
+- **Controle de parcelas**  
+  Visualize, gere e acompanhe o pagamento das parcelas de cada empréstimo, incluindo status (paga/pendente/atrasada).
+
+- **Autenticação e autorização via JWT**  
+  Acesso seguro à API e ao frontend, com controle de permissões para usuários autenticados.
+
+- **Dashboard e relatórios**  
+  Visualize informações consolidadas, como total de empréstimos ativos, valores a receber, inadimplência e histórico de operações.
+
+- **Pesquisa e filtros avançados**  
+  Localize rapidamente clientes ou empréstimos usando filtros por nome, CPF, situação do contrato, período, etc.
+
+- **Histórico de operações**  
+  Consulte logs de alterações e ações realizadas por usuários no sistema.
+
+- **Interface responsiva e intuitiva**  
+  Frontend moderno em Angular, adaptado para uso em desktop e dispositivos móveis.
+
+- **API RESTful documentada (Swagger)**  
+  Endpoints organizados e facilmente testáveis para integração com outros sistemas ou desenvolvimento de novas funcionalidades.
+
+## Rodando com Docker
+
+Se você já possui Docker e Docker Compose instalados, pode rodar toda a aplicação (banco Oracle, backend e frontend) com um único comando.
+
+### Pré-requisitos
+- Docker e Docker Compose instalados na máquina.
+
+### Passos rápidos
+```bash
+# Na raiz do projeto, execute:
+docker-compose up
+```
+
+- O Docker irá baixar as imagens necessárias, criar os containers e iniciar todos os serviços.
+- **É OBRIGATÓRIO executar a migration para criar as tabelas no banco Oracle.**
+- Abra um terminal na pasta do backend:
+  ```bash
+  cd Backend/WebAPI_EmprestimoConsignado
+  dotnet ef database update
+  ```
+- Pronto! As tabelas serão criadas no banco Oracle do container.
+- O backend (.NET) e frontend (Angular) estarão prontos para uso.
+
+### Como acessar
+- Frontend: http://localhost:4200
+- Backend (Swagger ou API): http://localhost:8080
+
+### Observações
+- O método tradicional/manual de execução (sem Docker) continua documentado abaixo.
+- Para desenvolvedores que preferem rodar cada parte separadamente, siga as instruções das seções de Backend, Frontend e Banco de Dados.
+
+## Instalação (Sem Docker)
 ```bash
 # Clone o repositório
 git clone [url-do-seu-repositório]
@@ -63,6 +116,88 @@ npm install
 ng serve --open
 ```
 Acesse: [http://localhost:4200](http://localhost:4200)
+
+## Funcionalidades
+- Autenticação e autorização de usuários (JWT)
+- Cadastro e login de usuários
+- CRUD completo de clientes
+- Endpoints seguros
+- Frontend Angular responsivo
+- Controle de empréstimos consignados
+
+## Tecnologias
+- Backend: .NET 9.0, ASP.NET Core Web API, Entity Framework Core, Oracle Database
+- Frontend: Angular 17+, Angular Material, RxJS, TypeScript, HTML5, SCSS
+
+## Configuração do Banco de Dados Oracle Local
+
+### 1. Instalar o Oracle XE (Express Edition)
+- Baixe em: https://www.oracle.com/database/technologies/xe-downloads.html
+- Siga o instalador padrão e anote a senha do usuário SYSTEM.
+
+### 2. Instalar o Oracle SQL Developer
+- Baixe em: https://www.oracle.com/tools/downloads/sqldev-downloads.html
+- Instale normalmente.
+
+### 3. Conectar ao banco Oracle XE pelo SQL Developer
+- Nova conexão:  
+  - Nome da conexão: emprestimo  
+  - Usuário: SYSTEM  
+  - Senha: (a definida na instalação)  
+  - Host: localhost  
+  - Porta: 1521  
+  - SID: XE  
+
+### 4. Criar usuário/schema para a aplicação
+No SQL Developer, execute:
+```sql
+CREATE USER emprestimo IDENTIFIED BY sua_senha_segura;
+GRANT CONNECT, RESOURCE TO emprestimo;
+ALTER USER emprestimo QUOTA UNLIMITED ON USERS;
+```
+
+### 5. Criar as tabelas do sistema
+- Execute os scripts SQL fornecidos na pasta `/scripts` do projeto.
+
+### 6. Configurar a string de conexão no backend
+- Defina a variável de ambiente `DefaultConnection_EmprestimoConsignado`:
+  ```
+  User Id=emprestimo;Password=sua_senha_segura;Data Source=localhost:1521/XE
+  ```
+- Ou edite o arquivo `appsettings.json`:
+  ```json
+  "ConnectionStrings": {
+    "DefaultConnection_EmprestimoConsignado": "User Id=emprestimo;Password=sua_senha_segura;Data Source=localhost:1521/XE"
+  }
+  ```
+
+### 7. Exemplo de appsettings.json
+```json
+{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "AppSettings": {
+        "Token": "SUA_CHAVE_SECRETA_AQUI"
+    },
+    "ConnectionStrings": {
+        "DefaultConnection_EmprestimoConsignado": "User Id=emprestimo;Password=sua_senha_segura;Data Source=localhost:1521/XE"
+    },
+    "AllowedHosts": "*"
+}
+```
+
+### 8. Executando a migration (criação das tabelas)
+- **É OBRIGATÓRIO executar a migration para criar as tabelas no banco Oracle.**
+- Abra um terminal na pasta do backend:
+  ```bash
+  cd Backend/WebAPI_EmprestimoConsignado
+  dotnet ef database update
+  ```
+- Pronto! As tabelas serão criadas no banco Oracle configurado.
 
 ## Frontend
 O frontend utiliza Angular e Angular Material para uma interface moderna e responsiva.
@@ -189,10 +324,11 @@ Backend/
 
 ## Table of Contents
 - [Overview](#overview)
-- [Badges](#badges-1)
+- [Running with Docker](#running-with-docker)
+- [Installation (Without Docker)](#installation)
 - [Features](#features)
 - [Technologies](#technologies)
-- [Installation](#installation)
+- [Oracle Local Database Setup](#oracle-local-database-setup)
 - [Frontend](#frontend-1)
 - [Backend](#backend-1)
 - [Usage Examples](#usage-examples)
@@ -203,28 +339,50 @@ Backend/
 
 ---
 
+## How to run the project
+
+There are two ways to run the application:
+
+1. **With Docker** (recommended): Automatically starts all services in containers.
+2. **Without Docker** (traditional/manual): Install and configure each part separately.
+
+Choose your preferred method and follow the instructions below.
+
 ## Overview
 A comprehensive Payroll Loan Management System built with .NET 9.0 (ASP.NET Core Web API) and Angular. Features JWT authentication, Oracle Database integration, full client and loan management, and a modern, responsive frontend.
 
-## Badges
-[![Build Status](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/seu-usuario/seu-repo/actions)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Angular](https://img.shields.io/badge/Frontend-Angular-red)](https://angular.io/)
-[![.NET](https://img.shields.io/badge/Backend-.NET%209.0-blue)](https://dotnet.microsoft.com/)
+## Running with Docker
 
-## Features
-- User Authentication and Authorization (JWT)
-- User Registration and Login
-- Full Client CRUD Management
-- Secure API Endpoints
-- Responsive Angular Frontend
-- Consigned Loan Tracking
+If you already have Docker and Docker Compose installed, you can run the entire application (Oracle database, backend, and frontend) with a single command.
 
-## Technologies
-- Backend: .NET 9.0, ASP.NET Core Web API, Entity Framework Core, Oracle Database
-- Frontend: Angular 17+, Angular Material, RxJS, TypeScript, HTML5, SCSS
+### Prerequisites
+- Docker and Docker Compose installed on the machine.
 
-## Installation
+### Quick Steps
+```bash
+# In the project root, run:
+docker-compose up
+```
+
+- Docker will download the necessary images, create the containers, and start all services.
+- **It is MANDATORY to run the migration to create the tables in the Oracle database.**
+- Open a terminal in the backend folder:
+  ```bash
+  cd Backend/WebAPI_EmprestimoConsignado
+  dotnet ef database update
+  ```
+- Done! The tables will be created in the Oracle database inside the container.
+- The backend (.NET) and frontend (Angular) will be ready for use.
+
+### How to Access
+- Frontend: http://localhost:4200
+- Backend (Swagger or API): http://localhost:8080
+
+### Notes
+- The traditional/manual execution method (without Docker) is still documented below.
+- For developers who prefer to run each part separately, follow the instructions in the Backend, Frontend, and Database sections.
+
+## Installation (Without Docker)
 ```bash
 # Clone the repository
 git clone [your-repo-url]
@@ -244,6 +402,88 @@ npm install
 ng serve --open
 ```
 Access: [http://localhost:4200](http://localhost:4200)
+
+## Features
+- User Authentication and Authorization (JWT)
+- User Registration and Login
+- Full Client CRUD Management
+- Secure API Endpoints
+- Responsive Angular Frontend
+- Consigned Loan Tracking
+
+## Technologies
+- Backend: .NET 9.0, ASP.NET Core Web API, Entity Framework Core, Oracle Database
+- Frontend: Angular 17+, Angular Material, RxJS, TypeScript, HTML5, SCSS
+
+## Oracle Local Database Setup
+
+### 1. Install Oracle XE (Express Edition)
+- Download from: https://www.oracle.com/database/technologies/xe-downloads.html
+- Follow the installer and note the SYSTEM user password.
+
+### 2. Install Oracle SQL Developer
+- Download from: https://www.oracle.com/tools/downloads/sqldev-downloads.html
+- Install normally.
+
+### 3. Connect to Oracle XE using SQL Developer
+- New connection:  
+  - Connection Name: emprestimo  
+  - User: SYSTEM  
+  - Password: (the one you set)  
+  - Host: localhost  
+  - Port: 1521  
+  - SID: XE  
+
+### 4. Create application user/schema
+In SQL Developer, run:
+```sql
+CREATE USER emprestimo IDENTIFIED BY your_secure_password;
+GRANT CONNECT, RESOURCE TO emprestimo;
+ALTER USER emprestimo QUOTA UNLIMITED ON USERS;
+```
+
+### 5. Create system tables
+- Run the SQL scripts provided in the `/scripts` folder.
+
+### 6. Configure the connection string in the backend
+- Set the environment variable `DefaultConnection_EmprestimoConsignado`:
+  ```
+  User Id=emprestimo;Password=your_secure_password;Data Source=localhost:1521/XE
+  ```
+- Or edit the `appsettings.json` file:
+  ```json
+  "ConnectionStrings": {
+    "DefaultConnection_EmprestimoConsignado": "User Id=emprestimo;Password=your_secure_password;Data Source=localhost:1521/XE"
+  }
+  ```
+
+### 7. Example appsettings.json
+```json
+{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Warning"
+        }
+    },
+    "AppSettings": {
+        "Token": "YOUR_SECRET_KEY_HERE"
+    },
+    "ConnectionStrings": {
+        "DefaultConnection_EmprestimoConsignado": "User Id=emprestimo;Password=your_secure_password;Data Source=localhost:1521/XE"
+    },
+    "AllowedHosts": "*"
+}
+```
+
+### 8. Running the migration (table creation)
+- **It is MANDATORY to run the migration to create the tables in the Oracle database.**
+- Open a terminal in the backend folder:
+  ```bash
+  cd Backend/WebAPI_EmprestimoConsignado
+  dotnet ef database update
+  ```
+- Done! The tables will be created in the configured Oracle database.
 
 ## Frontend
 The frontend is built with Angular and Angular Material for a modern, responsive UI for client and loan management.
@@ -363,5 +603,3 @@ Backend/
 ## Notes
 - The system follows best practices for architecture and separation of concerns.
 - It is recommended to configure environment variables for sensitive data in production.
-
----

@@ -42,7 +42,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-// Adicionando a configuração do CORS
+// Adicionando a configuraï¿½ï¿½o do CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTudo",
@@ -52,8 +52,8 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader());
 });
 
-// Configuração do banco de dados
-var connectionString = Environment.GetEnvironmentVariable("DefaultConnection_EmprestimoConsignado");
+// Configuraï¿½ï¿½o do banco de dados
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection_EmprestimoConsignado");
 if (string.IsNullOrEmpty(connectionString))
 {
     throw new InvalidOperationException("Database connection string is not set.");
@@ -63,7 +63,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseOracle(connectionString);
 });
 
-// Configuração de autorização genérica baseada em CargoEnum
+// Adicionando Health Checks
+builder.Services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>("oracle-db");
+
+// Configuraï¿½ï¿½o de autorizaï¿½ï¿½o genï¿½rica baseada em CargoEnum
 builder.Services.AddAuthorization(options =>
 {
     foreach (var cargo in Enum.GetValues<CargoEnum>())
@@ -75,15 +78,16 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 app.UseCors("PermitirTudo");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+// Endpoint pÃºblico de health check
+app.MapHealthChecks("/health");
+
 app.Run();
