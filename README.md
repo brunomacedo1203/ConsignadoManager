@@ -79,12 +79,26 @@ docker-compose up
 ```
 
 - O Docker irá baixar as imagens necessárias, criar os containers e iniciar todos os serviços.
-- **É OBRIGATÓRIO executar a migration para criar as tabelas no banco Oracle.**
-- Abra um terminal na pasta do backend:
-  ```bash
-  cd Backend/WebAPI_EmprestimoConsignado
-  dotnet ef database update
-  ```
+- **É necessário criar as tabelas no banco Oracle** para o sistema funcionar. Existem duas opções para isso — escolha apenas uma delas:
+
+#### Opção 1: Usando as migrations do Entity Framework (recomendado para desenvolvedores)
+
+No terminal, dentro da pasta do backend:
+```bash
+cd Backend/WebAPI_EmprestimoConsignado
+# Certifique-se que o container Oracle está rodando e acessível
+# O backend precisa conseguir conectar ao banco Oracle
+
+dotnet ef database update
+```
+Isso aplicará as migrations e criará as tabelas automaticamente.
+
+#### Opção 2: Executando o script SQL gerado
+
+Se preferir (ou se for DBA, ou ambiente controlado), rode o script SQL gerado (`create_db.sql`) diretamente no Oracle. Siga o passo a passo da próxima seção.
+
+> **Atenção:** Não é necessário executar as duas opções! Basta escolher uma delas para criar as tabelas.
+
 - Pronto! As tabelas serão criadas no banco Oracle do container.
 - O backend (.NET) e frontend (Angular) estarão prontos para uso.
 
@@ -95,6 +109,50 @@ docker-compose up
 ### Observações
 - O método tradicional/manual de execução (sem Docker) continua documentado abaixo.
 - Para desenvolvedores que preferem rodar cada parte separadamente, siga as instruções das seções de Backend, Frontend e Banco de Dados.
+
+## Como criar as tabelas no Oracle Dockerizado
+
+Após subir o ambiente com Docker, **você deve criar as tabelas no banco Oracle** para o sistema funcionar. Existem **duas opções** para isso — escolha apenas uma delas:
+
+#### Opção 1: Usando as migrations do Entity Framework (recomendado para desenvolvedores)
+
+No terminal, dentro da pasta do backend:
+```bash
+cd Backend/WebAPI_EmprestimoConsignado
+# Certifique-se que o container Oracle está rodando e acessível
+# O backend precisa conseguir conectar ao banco Oracle
+
+dotnet ef database update
+```
+Isso aplicará as migrations e criará as tabelas automaticamente.
+
+#### Opção 2: Executando o script SQL gerado
+
+Se preferir (ou se for DBA, ou ambiente controlado), rode o script SQL gerado (`create_db.sql`) diretamente no Oracle. Siga o passo a passo da próxima seção.
+
+> **Atenção:** Não é necessário executar as duas opções! Basta escolher uma delas para criar as tabelas.
+
+1. **Copie o script para dentro do container Oracle:**
+   ```sh
+   docker cp create_db.sql <nome-do-container-oracle>:/tmp/create_db.sql
+   ```
+   Substitua `<nome-do-container-oracle>` pelo nome real do seu container (use `docker ps` para ver o nome).
+
+2. **Acesse o terminal do container Oracle:**
+   ```sh
+   docker exec -it <nome-do-container-oracle> bash
+   ```
+
+3. **Execute o script no banco usando o SQL*Plus:**
+   ```sh
+   sqlplus system/<SENHA>@//localhost:1521/XE @/tmp/create_db.sql
+   ```
+   - Troque `<SENHA>` pela senha definida para o usuário `system` no seu Docker Compose.
+   - Se o Oracle usar outro usuário ou service name, ajuste conforme necessário.
+
+4. **Pronto!** As tabelas do sistema serão criadas no banco Oracle do container.
+
+> **Dica:** Você só precisa rodar esse passo a passo quando quiser recriar as tabelas do zero (por exemplo, em um novo ambiente ou após resetar o banco).
 
 ## Instalação (Sem Docker)
 ```bash
@@ -191,13 +249,25 @@ ALTER USER emprestimo QUOTA UNLIMITED ON USERS;
 ```
 
 ### 8. Executando a migration (criação das tabelas)
-- **É OBRIGATÓRIO executar a migration para criar as tabelas no banco Oracle.**
-- Abra um terminal na pasta do backend:
-  ```bash
-  cd Backend/WebAPI_EmprestimoConsignado
-  dotnet ef database update
-  ```
-- Pronto! As tabelas serão criadas no banco Oracle configurado.
+- **É necessário criar as tabelas no banco Oracle** para o sistema funcionar. Existem **duas opções** para isso — escolha apenas uma delas:
+
+#### Opção 1: Usando as migrations do Entity Framework (recomendado para desenvolvedores)
+
+No terminal, dentro da pasta do backend:
+```bash
+cd Backend/WebAPI_EmprestimoConsignado
+# Certifique-se que o container Oracle está rodando e acessível
+# O backend precisa conseguir conectar ao banco Oracle
+
+dotnet ef database update
+```
+Isso aplicará as migrations e criará as tabelas automaticamente.
+
+#### Opção 2: Executando o script SQL gerado
+
+Se preferir (ou se for DBA, ou ambiente controlado), rode o script SQL gerado (`create_db.sql`) diretamente no Oracle. Siga o passo a passo da próxima seção.
+
+> **Atenção:** Não é necessário executar as duas opções! Basta escolher uma delas para criar as tabelas.
 
 ## Frontend
 O frontend utiliza Angular e Angular Material para uma interface moderna e responsiva.
@@ -365,12 +435,26 @@ docker-compose up
 ```
 
 - Docker will download the necessary images, create the containers, and start all services.
-- **It is MANDATORY to run the migration to create the tables in the Oracle database.**
-- Open a terminal in the backend folder:
-  ```bash
-  cd Backend/WebAPI_EmprestimoConsignado
-  dotnet ef database update
-  ```
+- **It is necessary to create the tables in the Oracle database** for the system to work. There are **two options** for this — choose only one:
+
+#### Option 1: Using Entity Framework migrations (recommended for developers)
+
+In the terminal, inside the backend folder:
+```bash
+cd Backend/WebAPI_EmprestimoConsignado
+# Make sure the Oracle container is running and accessible
+# The backend needs to be able to connect to the Oracle database
+
+dotnet ef database update
+```
+This will apply the migrations and create the tables automatically.
+
+#### Option 2: Running the generated SQL script
+
+If you prefer (or if you are a DBA, or in a controlled environment), run the generated SQL script (`create_db.sql`) directly on Oracle. Follow the step-by-step instructions in the next section.
+
+> **Attention:** You don't need to run both options! Just choose one to create the tables.
+
 - Done! The tables will be created in the Oracle database inside the container.
 - The backend (.NET) and frontend (Angular) will be ready for use.
 
@@ -381,6 +465,50 @@ docker-compose up
 ### Notes
 - The traditional/manual execution method (without Docker) is still documented below.
 - For developers who prefer to run each part separately, follow the instructions in the Backend, Frontend, and Database sections.
+
+## Como criar as tabelas no Oracle Dockerizado
+
+Após subir o ambiente com Docker, **você deve criar as tabelas no banco Oracle** para o sistema funcionar. Existem **duas opções** para isso — escolha apenas uma delas:
+
+#### Opção 1: Usando as migrations do Entity Framework (recomendado para desenvolvedores)
+
+No terminal, dentro da pasta do backend:
+```bash
+cd Backend/WebAPI_EmprestimoConsignado
+# Certifique-se que o container Oracle está rodando e acessível
+# O backend precisa conseguir conectar ao banco Oracle
+
+dotnet ef database update
+```
+Isso aplicará as migrations e criará as tabelas automaticamente.
+
+#### Opção 2: Executando o script SQL gerado
+
+Se preferir (ou se for DBA, ou ambiente controlado), rode o script SQL gerado (`create_db.sql`) diretamente no Oracle. Siga o passo a passo da próxima seção.
+
+> **Atenção:** Não é necessário executar as duas opções! Basta escolher uma delas para criar as tabelas.
+
+1. **Copie o script para dentro do container Oracle:**
+   ```sh
+   docker cp create_db.sql <nome-do-container-oracle>:/tmp/create_db.sql
+   ```
+   Substitua `<nome-do-container-oracle>` pelo nome real do seu container (use `docker ps` para ver o nome).
+
+2. **Acesse o terminal do container Oracle:**
+   ```sh
+   docker exec -it <nome-do-container-oracle> bash
+   ```
+
+3. **Execute o script no banco usando o SQL*Plus:**
+   ```sh
+   sqlplus system/<SENHA>@//localhost:1521/XE @/tmp/create_db.sql
+   ```
+   - Troque `<SENHA>` pela senha definida para o usuário `system` no seu Docker Compose.
+   - Se o Oracle usar outro usuário ou service name, ajuste conforme necessário.
+
+4. **Pronto!** As tabelas do sistema serão criadas no banco Oracle do container.
+
+> **Dica:** Você só precisa rodar esse passo a passo quando quiser recriar as tabelas do zero (por exemplo, em um novo ambiente ou após resetar o banco).
 
 ## Installation (Without Docker)
 ```bash
@@ -477,13 +605,25 @@ ALTER USER emprestimo QUOTA UNLIMITED ON USERS;
 ```
 
 ### 8. Running the migration (table creation)
-- **It is MANDATORY to run the migration to create the tables in the Oracle database.**
-- Open a terminal in the backend folder:
-  ```bash
-  cd Backend/WebAPI_EmprestimoConsignado
-  dotnet ef database update
-  ```
-- Done! The tables will be created in the configured Oracle database.
+- **It is necessary to create the tables in the Oracle database** for the system to work. There are **two options** for this — choose only one:
+
+#### Option 1: Using Entity Framework migrations (recommended for developers)
+
+In the terminal, inside the backend folder:
+```bash
+cd Backend/WebAPI_EmprestimoConsignado
+# Make sure the Oracle container is running and accessible
+# The backend needs to be able to connect to the Oracle database
+
+dotnet ef database update
+```
+This will apply the migrations and create the tables automatically.
+
+#### Option 2: Running the generated SQL script
+
+If you prefer (or if you are a DBA, or in a controlled environment), run the generated SQL script (`create_db.sql`) directly on Oracle. Follow the step-by-step instructions in the next section.
+
+> **Attention:** You don't need to run both options! Just choose one to create the tables.
 
 ## Frontend
 The frontend is built with Angular and Angular Material for a modern, responsive UI for client and loan management.
@@ -603,3 +743,5 @@ Backend/
 ## Notes
 - The system follows best practices for architecture and separation of concerns.
 - It is recommended to configure environment variables for sensitive data in production.
+
+```

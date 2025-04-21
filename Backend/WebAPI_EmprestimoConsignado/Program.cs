@@ -42,7 +42,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     };
 });
 
-// Adicionando a configura��o do CORS
+// Adding CORS configuration
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirTudo",
@@ -52,7 +52,7 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader());
 });
 
-// Configura��o do banco de dados
+// Database configuration
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection_EmprestimoConsignado");
 if (string.IsNullOrEmpty(connectionString))
 {
@@ -63,10 +63,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseOracle(connectionString);
 });
 
-// Adicionando Health Checks
+// Adding Health Checks
 builder.Services.AddHealthChecks().AddDbContextCheck<ApplicationDbContext>("oracle-db");
 
-// Configura��o de autoriza��o gen�rica baseada em CargoEnum
+// Generic authorization configuration based on CargoEnum
 builder.Services.AddAuthorization(options =>
 {
     foreach (var cargo in Enum.GetValues<CargoEnum>())
