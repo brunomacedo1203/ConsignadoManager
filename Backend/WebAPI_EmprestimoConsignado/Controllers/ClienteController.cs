@@ -87,6 +87,12 @@ namespace WebAPI_EmprestimoConsignado.Controllers
             worksheet.Cell(1, 3).Value = "CPF";
             worksheet.Cell(1, 4).Value = "Email";
             worksheet.Cell(1, 5).Value = "Status";
+            worksheet.Cell(1, 6).Value = "Tipo de Empréstimo";
+            worksheet.Cell(1, 7).Value = "Status do Empréstimo";
+            worksheet.Cell(1, 8).Value = "Valor do Empréstimo";
+            worksheet.Cell(1, 9).Value = "Quantidade de Parcelas";
+            worksheet.Cell(1, 10).Value = "Valor da Parcela";
+            worksheet.Cell(1, 11).Value = "Data de Contratação";
 
             // Dados
             for (int i = 0; i < clientes.Count; i++)
@@ -97,6 +103,12 @@ namespace WebAPI_EmprestimoConsignado.Controllers
                 worksheet.Cell(i + 2, 3).Value = cliente.CPF;
                 worksheet.Cell(i + 2, 4).Value = cliente.Email;
                 worksheet.Cell(i + 2, 5).Value = cliente.Ativo ? "Ativo" : "Inativo";
+                worksheet.Cell(i + 2, 6).Value = cliente.TipoEmprestimo.ToString();
+                worksheet.Cell(i + 2, 7).Value = cliente.StatusEmprestimo.ToString();
+                worksheet.Cell(i + 2, 8).Value = cliente.ValorEmprestimo;
+                worksheet.Cell(i + 2, 9).Value = cliente.QtdParcelas;
+                worksheet.Cell(i + 2, 10).Value = cliente.ValorParcela;
+                worksheet.Cell(i + 2, 11).Value = cliente.DataContratacao.ToString("dd/MM/yyyy");
             }
 
             worksheet.Columns().AdjustToContents();
