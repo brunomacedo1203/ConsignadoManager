@@ -9,6 +9,11 @@
   margin-bottom: 20px;
 }
 
+.botoes-acoes {
+  display: flex;
+  gap: 8px;
+}
+
 .mat-form-field {
   width: 40%;
 }
@@ -78,6 +83,7 @@ mat-card-title {
 /* Estilo visual para botões sem permissão */
 .no-access {
   opacity: 0.5;
-  pointer-events: auto; /* permite hover e tooltip */
+  pointer-events: auto;
+  /* permite hover e tooltip */
   cursor: not-allowed;
 }

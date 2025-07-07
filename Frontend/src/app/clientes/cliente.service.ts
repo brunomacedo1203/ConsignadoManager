@@ -29,7 +29,7 @@ export interface ServiceResponse<T> {
 export class ClienteService {
   private apiUrl = `${environment.apiUrl}/Cliente`;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getClientes(): Observable<ServiceResponse<Cliente[]>> {
     return this.http.get<ServiceResponse<Cliente[]>>(this.apiUrl);
@@ -69,13 +69,17 @@ export class ClienteService {
     return this.http.put<ServiceResponse<Cliente[]>>(this.apiUrl, clienteData);
   }
 
-  // Corrigir: endpoint correto para inativar cliente
   inativarCliente(id: number): Observable<ServiceResponse<Cliente[]>> {
     return this.http.put<ServiceResponse<Cliente[]>>(`${this.apiUrl}/inativaCliente?id=${id}`, {});
   }
 
-  // Método para excluir cliente via endpoint dedicado
   excluirCliente(id: number): Observable<ServiceResponse<Cliente[]>> {
     return this.http.delete<ServiceResponse<Cliente[]>>(`${this.apiUrl}?id=${id}`);
+  }
+
+  exportarExcel(): Observable<Blob> {
+    return this.http.get(`${this.apiUrl}/exportar-excel`, {
+      responseType: 'blob'
+    });
   }
 }

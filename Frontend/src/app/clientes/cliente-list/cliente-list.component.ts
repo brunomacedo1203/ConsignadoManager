@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule, MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorModule, MatPaginator } from '@angular/material/paginator';
 import { MatSortModule, MatSort } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,7 +38,7 @@ import { AuthService } from '../../auth/auth.service';
 })
 export class ClienteListComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'email', 'ativo', 'acoes'];
-  dataSource: MatTableDataSource<Cliente>;
+  dataSource: MatTableDataSource<Cliente> = new MatTableDataSource<Cliente>([]);
   isLoading = true;
   isAdmin = false;
 
@@ -51,10 +51,8 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
     private router: Router,
     private authService: AuthService
   ) {
-    this.dataSource = new MatTableDataSource<Cliente>([]);
-    // Verifica se o usuário é administrador
     const user = this.authService.currentUserValue;
-    this.isAdmin = user && user.cargo === 'Administrador';
+    this.isAdmin = user?.cargo === 'Administrador';
   }
 
   ngOnInit() {
@@ -69,7 +67,6 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
   aplicarFiltro(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -79,13 +76,12 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
     this.isLoading = true;
     this.clienteService.getClientes().subscribe({
       next: (response: ServiceResponse<Cliente[]>) => {
-        console.log('Clientes carregados:', response);
-        if (response && response.dados) {
+        if (response?.dados) {
           this.dataSource.data = response.dados;
         }
         this.isLoading = false;
       },
-      error: (error: unknown) => {
+      error: (error) => {
         console.error('Erro ao carregar clientes:', error);
         this.isLoading = false;
       }
@@ -115,11 +111,10 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(confirmado => {
       if (confirmado) {
-        // Agora chama o endpoint correto de inativação
         this.clienteService.inativarCliente(cliente.id).subscribe({
           next: (response) => {
-            if (response && response.sucesso) {
-              this.carregarClientes(); // Atualiza a lista
+            if (response?.sucesso) {
+              this.carregarClientes();
             } else {
               console.error('Erro ao inativar cliente:', response?.mensagem);
             }
@@ -142,7 +137,7 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
       if (confirmado) {
         this.clienteService.excluirCliente(cliente.id).subscribe({
           next: (response) => {
-            if (response && response.sucesso) {
+            if (response?.sucesso) {
               this.carregarClientes();
               this.router.navigate(['/clientes']);
             } else {
@@ -159,5 +154,24 @@ export class ClienteListComponent implements OnInit, AfterViewInit {
 
   mostrarSemPermissao() {
     alert('Você não tem permissão para realizar esta ação.');
+  }
+
+  exportarExcel() {
+    this.clienteService.exportarExcel().subscribe({
+      next: (blob) => {
+        const blobUrl = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = blobUrl;
+        link.download = 'clientes.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(blobUrl);
+      },
+      error: (error) => {
+        console.error('Erro ao exportar clientes:', error);
+        alert('Erro ao exportar clientes para Excel.');
+      }
+    });
   }
 }

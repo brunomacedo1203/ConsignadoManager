@@ -62,30 +62,29 @@ namespace WebAPI_EmprestimoConsignado.Service.AuthService
                 if (usuario == null) {
                     respostaServico.Mensagem = "Crendencias Inválidas!";
                     respostaServico.Status = false;
+                    Console.WriteLine("Usuário não encontrado para o email: " + usuarioLogin.Email);
                     return respostaServico;
-            }
+                }
                 if(!_senhaInterface.VerificaSenhaHash(usuarioLogin.Senha, usuario.SenhaHash, usuario.SenhaSalt))
                 {
                     respostaServico.Mensagem = "Credenciais inválidas!";
                     respostaServico.Status = false;
+                    Console.WriteLine("Senha inválida para o email: " + usuarioLogin.Email);
                     return respostaServico;
                 }
                 var token = _senhaInterface.CriarToken(usuario);
-
+                Console.WriteLine("Token gerado: " + token);
                 respostaServico.Dados = token;
                 respostaServico.Mensagem = "Usuário logado com sucesso!";
-
             }
-
             catch (Exception ex)
             {
                 respostaServico.Dados = null;
                 respostaServico.Mensagem = ex.Message;
                 respostaServico.Status = false;
+                Console.WriteLine("Exceção no Login: " + ex.Message);
             }
-
             return respostaServico;
-
         }
         public bool VerificaSeEmaileUusuarioExiste(UsuarioCriacaoDto usuarioRegistro)
         {

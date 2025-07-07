@@ -35,24 +35,23 @@ namespace WebAPI_EmprestimoConsignado.Service.SenhaService
        
         public string CriarToken(UsuarioModel usuario)
         {
+            Console.WriteLine("[CriarToken] Email do usuário: " + usuario.Email);
+            Console.WriteLine("[CriarToken] Chave secreta: " + _config.GetSection("AppSettings:Token").Value);
             List<Claim> claims = new List<Claim>()
             {
                 new Claim("Cargo", usuario.Cargo.ToString()),
                 new Claim("Email", usuario.Email),
                 new Claim("Username", usuario.Usuario)
             };
-
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_config.GetSection("AppSettings:Token").Value));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
-
             var token = new JwtSecurityToken(
                     claims: claims,
                     expires: DateTime.Now.AddDays(1),
                     signingCredentials: cred
                 );
-
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
-
+            Console.WriteLine("[CriarToken] JWT gerado: " + jwt);
             return jwt;
         }
     }
